@@ -15,11 +15,15 @@ class RenderingController extends Controller
 {
     /**
      * @Route("/")
-     * @Template()
      */
-    public function indexAction()
+    public function schemaUpdateAction()
     {
-        $this->get('coddictdevextra.entitymanager')->schemaUpdate();
-        return array();
+        try{
+            $this->get('coddictdevextra.entitymanager')->schemaUpdate();    
+        }catch(\Exception $e){
+            die("Database schema could not be updated: " . $e->getMessage());
+        }
+        
+        return new Response("Database schema in-sync!");
     }
 }
