@@ -12,6 +12,7 @@ class ComposerServiceTest extends WebTestCase
     	$depencendyName = 'dev/extra/dependency';
         $container = static::createClient()->getContainer();
         $container->get('coddictdevextra.composer')->addDependency($depencendyName, '0.11.*');
+        $container->get('coddictdevextra.composer')->updateDependency($depencendyName, '0.12.*');
         $container->get('coddictdevextra.composer')->removeDependency($depencendyName);
     }
 }

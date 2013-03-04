@@ -43,6 +43,10 @@ class ComposerService extends AbstractService
 	public function updateDependency($name, $version)
 	{
 		$this->loadComposer();
+		if(!isset($this->composerObject["require"][$name]))
+			throw new \Exception("Depencendy ".$name."not found");
+		$this->composerObject["require"][$name] = $version;
+		$this->saveComposer();
 	}
 	
 	public function existDependency($name)
