@@ -1,0 +1,5 @@
+coddict_dev_extra:
+    resource: "@CoddictDevExtraBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
