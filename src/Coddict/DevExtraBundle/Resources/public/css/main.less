@@ -1,0 +1,192 @@
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background: url('../img/panel_bck.jpg') repeat;
+}
+
+.main-menu{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    
+    > ul {
+        position: relative;
+        height: 100%;
+        box-shadow: inset -12px 4px 10px -12px rgba(0, 0, 0, 0.6), inset 250px 0 0 rgba(0, 0, 0, 0.35);
+        -webkit-transition: all 0.025s linear;
+        background-image: url('../img/menu_bck.png');
+        
+        > li{
+            line-height: 28px;
+            > a{
+                position: relative;
+                background: transparent;
+                border-top: 1px solid rgba(31, 35, 40, 0);
+                border-bottom: 1px solid rgba(31, 35, 40, 0);
+                height: 28px;
+                padding: 0;
+                color: #D1D7DF;
+                font-size: 14px;
+                display: block;
+                cursor: pointer;
+                
+                &:hover{
+                    text-decoration: none;
+                }
+                
+                > i {
+                    position: relative;
+                    float: left;
+                    vertical-align: middle;
+                    color: #D1D7DF;
+                    height: 28px;
+                    line-height: 28px;
+                    text-align: center;
+                    width: 38px;
+                    margin: 0;
+                    z-index: 5;
+                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+                    font-size: 20px;
+                }
+                
+                > span{
+                    max-width: 0px;
+                    position: relative;
+                    display: inline-block;
+                    max-width: 0;
+                    overflow: hidden;
+                    margin-left: 2px;
+                    white-space: nowrap;
+                    z-index: 5;
+                    box-sizing: border-box;
+                    -webkit-transition: max-width 0.05s linear;
+                    
+                    /* non-breaking spaces */
+                    &::after{
+                        content: '\00a0\00a0\00a0\00a0';
+                    }
+                }
+                
+                &:hover{
+                    background-color: rgba(31, 35, 40, 0.35);
+                    border-top: 1px solid #1F2328;
+                    border-bottom: 1px solid #1F2328;
+                    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.05), inset 0 -3px 25px -5px rgba(0, 0, 0, 0.7);
+                    overflow: hidden;
+                }
+            }
+            
+            &.shadow-layer{
+                position: absolute;
+                display: block;
+                right: 0px;
+                height: 100%;
+                width: 0;
+                border-right: 0 solid transparent;
+                z-index: 100;
+                box-shadow: 0px 0px 3px 1px transparent;
+                -webkit-transition: all 0.025s linear;
+            }
+        }
+        
+        &:hover > li > a > span{
+            max-width: 350px;
+        }
+        
+        &:hover > li.shadow-layer{
+            box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.8);
+        }
+    }
+}
+
+.left-panel{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    z-index: 2;
+    box-shadow: inset -12px 4px 10px -12px rgba(0, 0, 0, 0.6);
+    -webkit-transition: left 0.1s ease-out;
+    
+    .content{
+        position: absolute;
+        padding: 20px 20px 20px 60px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        color: #E1E7EF;
+    }
+    
+    .close-arrow{
+        width: 20px;
+        height: 44px;
+        cursor: pointer;
+        position: absolute;
+        
+        background-image: url('../img/sliders@2x.png');
+        background-repeat: no-repeat;
+        background-size: 17px 300px;
+        background-position: 3px 0px;
+        
+        right: 0px;
+        top: 50%;
+        margin-top: -22px;
+        
+        &:hover{
+            background-position: 3px -43px;
+        }
+    }
+}
+
+.main-content{
+    position: absolute;
+    overflow: hidden;
+    left: 400px;
+    right: 0;
+    width: auto;
+    min-height: 100%;
+    z-index: 1;
+    background: #F6F6F6;
+    -webkit-transition: left 0.1s ease-out;
+    padding: 20px;
+    box-sizing: border-box;
+    
+    &.no-left-panel{
+        left: 60px;
+    }
+    
+}
+
+body.retracted{
+    .main-content{
+        left: 60px;
+    }
+    
+    .left-panel{
+        left: -340px;
+        
+        .close-arrow{
+            background-position: 3px -87px;
+            
+            &:hover{
+                background-position: 3px -130px;
+            }
+        }
+    }
+}
+
+.composer-dependency-all .table-container{
+    padding: 0 50px;
+}
+
+@import "login.less";

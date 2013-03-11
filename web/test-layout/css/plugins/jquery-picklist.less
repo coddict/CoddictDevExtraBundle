@@ -1,0 +1,95 @@
+.pickList{
+    position: relative;
+    width: 100%;
+    .box-sizing(border-box);
+    
+}
+.pickList_sourceListContainer, .pickList_controlsContainer, .pickList_targetListContainer { 
+    float: left; padding: (@baseLineHeight * 0.75); width: 45%;
+    .box-sizing(border-box);
+}
+.pickList_sourceListContainer{
+    padding-left: 0;
+}
+.pickList_targetListContainer{
+    padding-right: 0;
+}
+.pickList_controlsContainer { 
+    width: 10%;
+    text-align: center;
+    padding: 0px;
+    padding-top: 125px;
+}
+.pickList_controlsContainer button {
+    position: relative;
+    margin: 0 auto;
+    display: block; width: 30px; text-align: center; 
+    .box-sizing(border-box);
+    
+  padding: 4px 0;
+  margin-bottom: 5px; // For input.btn
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  *line-height: @baseLineHeight;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  .buttonBackground(@white, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+  border: 1px solid @btnBorder;
+  *border: 0; // Remove the border to prevent IE7's black border on input:focus
+  border-bottom-color: darken(@btnBorder, 10%);
+  .border-radius(@baseBorderRadius);
+  .ie7-restore-left-whitespace(); // Give IE7 some love
+  .box-shadow(inset 0 1px 1px 0 rgba(255,255,255,.5));
+  
+  &:hover {
+    color: @grayDark;
+    text-decoration: none;
+    background-color: darken(@btnBackground, 20%);
+    *background-color: darken(@btnBackground, 25%); /* Buttons in IE7 don't get borders, so darken on hover */
+    background-position: 0 -15px;
+    border: 1px solid darken(@btnBackground, 45%);
+ 
+    // transition is only when going to hover, otherwise the background
+    // behind the gradient (there for IE<=9 fallback) gets mismatched
+    .transition(background-position .01s linear);
+  }
+  
+  &.active,
+  &:active {
+    background-color: darken(@btnBackground, 20%);
+    background-color: darken(@btnBackground, 25%) e("\9");
+    background-image: none;
+    outline: 0;
+    .box-shadow(inset 0 0 5px 1px darken(@btnBackground, 35%));
+  }
+  
+  &.disabled,
+  &[disabled] {
+    cursor: default;
+    background-color: darken(@btnBackground, 10%);
+    background-image: none;
+    .opacity(65);
+    .box-shadow(none);
+  }
+}
+.pickList_list { 
+    background: @white;
+    list-style-type: none; margin: 0; padding: 0; float: left; width: 100%; height: 350px; overflow-y: auto; cursor: default; 
+    border: 1px solid @grayLighter;
+    .border-radius(4px);
+    padding: (@baseLineHeight /4) (@baseLineHeight /2);
+    .box-sizing(border-box);
+    .box-shadow(~"inset 2px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 1px white");
+    .photon-text(normal, @baseFontSize, 0 1px 0 rgba(255, 255, 255, 0.8), (@baseLineHeight * 0.75)); 
+}
+.pickList_selectedListItem { 
+    background-color: #d4d4d4; 
+    color: #000;
+}
+.pickList_listLabel { 
+   margin: (@baseLineHeight /4) 0;
+   text-align: center;
+   .photon-text(normal, @baseFontSize, 0 1px 0 rgba(255, 255, 255, 0.2), (@baseLineHeight ));
+}
+.pickList_clear { clear: both; }

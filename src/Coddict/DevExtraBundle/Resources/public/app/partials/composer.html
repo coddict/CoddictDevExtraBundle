@@ -1,0 +1,73 @@
+<div class="left-panel">
+    <div class="content">
+        <form ng-controller="ComposerAddDepCtrl" ng-submit="send()">
+            <fieldset>
+                
+                <label>
+                    <p>{{ "composer.dependency.name" | trans }}: </p>
+                    <input ng-model="depName" required type="text" placeholder="Ex: symfony/symfony" />
+                </label>
+            
+                <label>
+                    <p>{{ "composer.dependency.version" | trans }}: </p>
+                    <input ng-model="depVersion" required type="text" placeholder="Ex: 2.2.*" />
+                </label>
+                
+                <div>
+                    <button 
+                        ng-disabled="waitingResponse" 
+                        ng-class="{'btn-success': isSuccess, 'btn-danger': isError}" class="btn btn-primary">
+                        <i ng-show="waitingResponse" class="icon-spinner icon-spin"></i> 
+                        {{ "composer.dependency.add" | trans }}
+                    </button> {{ message }}
+                </div>
+                
+            </fieldset>
+        </form>
+        
+    </div>
+    <div class="close-arrow" onclick="$('body').toggleClass('retracted')"></div>
+</div>
+<div class="main-content">
+    <div ng-controller="ComposerCtrl">
+        
+        <div class="composer-dependency-all">
+            <legend>{{ "composer.dependency.all" | trans }}</legend>
+            <div class="table-container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{ "composer.dependency.name" | trans }}</th>
+                            <th>{{ "composer.dependency.version" | trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(name, version) in dependencies">
+                            <td>{{ name }}</td>
+                            <td>{{ version }}</td>
+                        </tr>
+                        <tr ng-show="noDependencies()">
+                            <td colspan="2" class="text-center">
+                                {{ "composer.dependency.none" | trans }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div btsp-modal="testing" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">{{ "composer.dependency.errMsgHeader" | trans }}</h3>
+            </div>
+            <div class="modal-body">
+                <p class="alert alert-error">{{ errorMsg }}</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-inverse" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+    </div>
+</div>

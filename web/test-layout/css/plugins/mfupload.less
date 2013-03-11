@@ -1,0 +1,32 @@
+.upload-boxes{
+    padding: (@baseLineHeight *0.75) (@baseLineHeight *0.5) (@baseLineHeight *0.75) 0;
+    height: 150px;
+    width: 100%;
+    .clearfix;
+    .box-sizing(border-box);
+
+    #upload, #uploaded{
+        height:100%;
+        padding: (@baseLineHeight *0.75) (@baseLineHeight *0.5);
+        .box-sizing(border-box);
+        .border-radius(4px);
+        color: @gray;
+    }
+    #upload{
+        border:2px dashed #ddd; float:left;
+        
+        input:hover{
+            cursor: pointer;
+        }
+    }
+
+    .mf_upload_m{
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden;
+    }
+
+    #uploaded{
+        border: 1px solid #ddd; float:right; overflow-y:auto;
+    }
+}

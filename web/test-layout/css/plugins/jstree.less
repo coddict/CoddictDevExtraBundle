@@ -1,0 +1,233 @@
+/*
+ * jsTree default theme 1.0
+ * Supported features: dots/no-dots, icons/no-icons, focused, loading
+ * Supported plugins: ui (hovered, clicked), checkbox, contextmenu, search
+ */
+
+.jstree-default{
+    text-align: left;
+    margin-bottom: @baseLineHeight;
+}
+
+.jstree-default li, 
+.jstree-default ins { 
+    background-image:url("@{photonImagePath}plugins/jstree/d.png"); background-repeat:no-repeat; background-color:transparent; 
+    background-size: 108px 72px;
+}
+.jstree.jstree-default li { 
+    background-position:-90px 0; background-repeat:repeat-y; 
+    min-height: @baseLineHeight;
+    line-height: @baseLineHeight;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    .photon-text(lighter, @baseFontSize, none, (@baseLineHeight - 3px));
+}
+
+.jstree.jstree-default > ul > li{
+    &:first-child{
+        padding-top: 5px;
+    }
+}
+.jstree.jstree-default a > ins{
+    width: 18px;
+}
+.jstree-default li.jstree-last { background:transparent; }
+.jstree-default .jstree-open > ins { background-position:-72px 0; }
+.jstree-default .jstree-open > a > ins { 
+    background-position:-56px -37px; 
+}
+.jstree-default .jstree-closed > ins { background-position:-54px 0; }
+.jstree-default .jstree-leaf > ins { background-position:-36px 0; }
+
+.jstree.jstree-default .jstree-hovered { 
+    background: #3E4651; border:none; padding: 0px 2px;
+    border: 1px solid #2E3641;
+    color: @white;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    .box-shadow(inset 4px 4px 8px -3px #363D46);
+    .border-radius(4px);
+}
+.jstree.jstree-default .jstree-clicked {
+    border:none; padding: 1px 3px;
+    #gradient.vertical(@white, @grayLighter);
+    color: @grayDark;
+    text-shadow: 0 1px 1px white;
+    .box-shadow(1px 0 1px rgba(0, 0, 0, 0.3));
+    .border-radius(4px);
+}
+
+.jstree.jstree-default .jstree-clicked > ins{
+    background-position:-74px -19px; 
+}
+
+.jstree.jstree-default a{
+    max-width: 85%;
+    display: inline;
+    height: 17px;
+    padding: 1px 3px;
+    .photon-text(lighter, @baseFontSize, 0 2px 1px rgba(0, 0, 0, 0.3), (@baseLineHeight - 3px));
+}
+
+.jstree-default a .jstree-icon { background-position:-56px -19px; }
+.jstree-default a.jstree-loading .jstree-icon { background:url("@{photonImagePath}plugins/jstree/throbber.gif") center center no-repeat !important; }
+
+.jstree-default.jstree-focused { background:transparent; }
+
+.jstree-default .jstree-no-dots li, 
+.jstree-default .jstree-no-dots .jstree-leaf > ins { background:transparent; }
+.jstree-default .jstree-no-dots .jstree-open > ins { background-position:-18px 0; }
+.jstree-default .jstree-no-dots .jstree-closed > ins { background-position:0 0; }
+
+.jstree-default .jstree-no-icons a .jstree-icon { display:none; }
+
+.jstree-default .jstree-search { font-style:italic; }
+
+.jstree-default .jstree-no-icons .jstree-checkbox { display:inline-block; }
+.jstree-default .jstree-no-checkboxes .jstree-checkbox { display:none !important; }
+.jstree-default .jstree-checked > a > .jstree-checkbox { background-position:-38px -19px; }
+.jstree-default .jstree-unchecked > a > .jstree-checkbox { background-position:-2px -19px; }
+.jstree-default .jstree-undetermined > a > .jstree-checkbox { background-position:-20px -19px; }
+.jstree-default .jstree-checked > a > .jstree-checkbox:hover { background-position:-38px -37px; }
+.jstree-default .jstree-unchecked > a > .jstree-checkbox:hover { background-position:-2px -37px; }
+.jstree-default .jstree-undetermined > a > .jstree-checkbox:hover { background-position:-20px -37px; }
+
+#vakata-dragged.jstree-default ins { background:transparent !important; }
+#vakata-dragged.jstree-default .jstree-ok { background:url("@{photonImagePath}plugins/jstree/d.png") -2px -53px no-repeat !important; }
+#vakata-dragged.jstree-default .jstree-invalid { background:url("@{photonImagePath}plugins/jstree/d.png") -18px -53px no-repeat !important; }
+#jstree-marker.jstree-default { background:url("@{photonImagePath}plugins/jstree/d.png") -41px -57px no-repeat !important; text-indent:-100px; }
+
+.jstree-default a.jstree-search { color:aqua; }
+.jstree-default .jstree-locked a { color:silver; cursor:default; }
+
+#vakata-contextmenu.jstree-default-context, 
+#vakata-contextmenu.jstree-default-context li ul { background:#f0f0f0; border:1px solid #979797; -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; }
+#vakata-contextmenu.jstree-default-context li { }
+#vakata-contextmenu.jstree-default-context a { color:black; }
+#vakata-contextmenu.jstree-default-context a:hover, 
+#vakata-contextmenu.jstree-default-context .vakata-hover > a { padding:0 5px; background:#e8eff7; border:1px solid #aecff7; color:black; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; }
+#vakata-contextmenu.jstree-default-context li.jstree-contextmenu-disabled a, 
+#vakata-contextmenu.jstree-default-context li.jstree-contextmenu-disabled a:hover { color:silver; background:transparent; border:0; padding:1px 4px; }
+#vakata-contextmenu.jstree-default-context li.vakata-separator { background:white; border-top:1px solid #e0e0e0; margin:0; }
+#vakata-contextmenu.jstree-default-context li ul { margin-left:-4px; }
+
+.sidebarMenuHolder{
+    position: relative;
+}
+.Jstree_shadow_top{
+    position: absolute;
+    top: -2px;
+    height: 9px;
+    width: 100%;
+    background: url("@{photonImagePath}plugins/jstree/shadow2.png") repeat-x top center;
+    z-index: @zindexPopover;
+}
+.Jstree_shadow_bottom{
+    position: absolute;
+    bottom: -5px;
+    height: 9px;
+    width: 100%;
+    background: url("@{photonImagePath}plugins/jstree/shadow.png") repeat-x top center;
+    z-index: @zindexPopover;
+}
+
+@media (max-width: 979px) {
+    .Jstree_shadow_top{
+        background: transparent;
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+        background: -moz-linear-gradient(top, rgba(32,37,44,1) 0%, rgba(32,37,44,0.97) 2%, rgba(79,81,82,0) 59%, rgba(96,96,96,0) 79%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(32,37,44,1)), color-stop(2%,rgba(32,37,44,0.97)), color-stop(59%,rgba(79,81,82,0)), color-stop(79%,rgba(96,96,96,0)));
+        background: -webkit-linear-gradient(top, rgba(32,37,44,1) 0%,rgba(32,37,44,0.97) 2%,rgba(79,81,82,0) 59%,rgba(96,96,96,0) 79%);
+        background: -o-linear-gradient(top, rgba(32,37,44,1) 0%,rgba(32,37,44,0.97) 2%,rgba(79,81,82,0) 59%,rgba(96,96,96,0) 79%);
+        background: -ms-linear-gradient(top, rgba(32,37,44,1) 0%,rgba(32,37,44,0.97) 2%,rgba(79,81,82,0) 59%,rgba(96,96,96,0) 79%);
+        background: linear-gradient(to bottom, rgba(32,37,44,1) 0%,rgba(32,37,44,0.97) 2%,rgba(79,81,82,0) 59%,rgba(96,96,96,0) 79%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#20252c', endColorstr='#00606060',GradientType=0 );
+    }
+    .jstree.jstree-default{
+        width: 100%;
+    }
+    .jstree-default li, 
+    .jstree-default ins { 
+        background-image:url("@{photonImagePath}plugins/jstree/d-mobile.png"); background-repeat:no-repeat; background-color:transparent; 
+        background-size: 108px 72px;
+    }
+    .jstree.jstree-default li{
+        padding: (@baseLineHeight /2  - 2px) 0;
+        border-top: 1px solid #4f5660;
+        border-bottom: 1px solid #2b3139;
+        margin-left: 0;
+    }
+    .jstree.jstree-default .jstree-open{
+        padding: (@baseLineHeight /2  - 1px) 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+        border: none;
+        background-color: rgba(50, 57, 68, 0.4);
+        .box-shadow(inset 0 6px 3px -5px #262e38);
+        
+        li:last-child{
+            .box-shadow(inset 0 -6px 3px -5px #262e38);
+        }
+        
+        &+.jstree-open{
+            border-top: 1px solid #4f5660;
+            background-color: rgba(50, 57, 68, 0.2);
+            .box-shadow(none);
+        }
+    }
+    li.jstree-open > ul{
+        border-top: 1px solid #2b3139;
+        margin-top: (@baseLineHeight /2 - 1px);
+    }
+    
+    .jstree.jstree-default li > ins{
+        width: 25px;
+        height: 22px;
+    }
+    
+    .jstree.jstree-default a{
+        position: relative;
+        top: 3px;
+    }
+    .jstree-default .jstree-leaf > ins{
+        background: transparent;
+    }
+    
+    .jstree-default .jstree-closed > ins { 
+        background-position: -2px -3px;
+    }
+    .jstree-default .jstree-open > ins { 
+        background-position: -2px -38px;
+    }
+
+    // INSET CONTROL
+    .jstree.jstree-default > ul > li {
+        // root level
+        & > ins{
+            margin-left: @baseLineHeight;
+        }
+
+        // 1st level
+        & > ul > li {
+            
+            & > ins{
+                margin-left: (@baseLineHeight *2);
+            }
+
+            // 2nd level
+            & > ul > li {
+                & > ins{
+                    margin-left: (@baseLineHeight *3);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px){
+    .Jstree_shadow_bottom{
+        display: none;
+    }
+}

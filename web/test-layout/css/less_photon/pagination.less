@@ -1,0 +1,30 @@
+//
+// Pagination (multiple pages)
+// --------------------------------------------------
+
+// Space out pagination from surrounding content
+.pagination {
+  margin: 0 0 (@baseLineHeight *0.75);
+  line-height: (@baseLineHeight /2);
+}
+
+.pagination ul > li > a,
+.pagination ul > li > span {
+  background-color: @backgroundGray;
+  border: 1px solid @grayLighter;
+  border-left-width: 0;
+  .box-shadow(~"inset -1px 1px 0 0 rgba(255,255,255,0.1), 1px 1px 0 0 white");
+  color: @gray;
+  text-shadow: 0px 1px 0px white;
+}
+
+.pagination ul > li > a:hover,
+.pagination ul > .active > a,
+.pagination ul > .active > span {
+  background-color: darken(@backgroundGray, 5);
+}
+
+.pagination ul > li:first-child > a,
+.pagination ul > li:first-child > span {
+  border-left-width: 1px;
+}

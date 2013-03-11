@@ -1,0 +1,138 @@
+/*
+Document   : jquery.pnotify.default.css
+Created on : Nov 23, 2009, 3:14:10 PM
+Author     : Hunter Perrin
+Version    : 1.2.0
+Link       : http://pinesframework.org/pnotify/
+Description:
+        Default styling for Pines Notify jQuery plugin.
+*/
+/* -- Notice */
+
+@pnotify-ieinfocolor: rgb(55, 63, 73, 0.9);
+@pnotify-infocolor: rgba(55, 63, 73, 0.9);
+
+.ui-pnotify {
+    top: (@baseLineHeight * 2);
+    right: @baseLineHeight;
+    //right: (@baseLineHeight * 1.75);
+    position: absolute;
+    height: auto;
+    /* Ensures notices are above everything */
+    z-index: 9999;
+    
+    h4{
+        font-size: 100%;
+        line-height: @baseLineHeight;
+        color: @grayLighter;
+    }
+    [class^="icon-"], [class*=" icon-"]{
+        background-image: url("@{photonImagePath}glyphicons-halflings-white.png");
+        .opacity(60);
+    }
+    .icon-info-sign{
+        font-family: 'IconicStroke';
+        font-style: normal;
+        font-size: @baseLineHeight;
+        text-shadow: none;
+        
+        position: relative;
+        top: 2px;
+        left: 0;
+        padding: 0;
+        height: @baseFontSize;
+        width: @baseFontSize;
+        .photon-text(lightest, 11px, none);
+        .border-radius(100px);
+        background: @white;
+        .box-shadow(0 1px 0 0 rgba(255, 255, 255, 0.8));
+        text-align: left;
+
+        &:before{
+            position: relative;
+            color: @pnotify-ieinfocolor;
+            color: @pnotify-infocolor;
+            top: -3px;
+            left: 5px;
+            content:'\2139';
+        }
+    }
+}
+/* Hides position: fixed from IE6 */
+html > body .ui-pnotify {
+    position: fixed;
+}
+.ui-pnotify .ui-pnotify-shadow {
+    -webkit-box-shadow: 0px 2px 10px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 2px 10px rgba(50, 50, 50, 0.5);
+    box-shadow: 0px 2px 10px rgba(50, 50, 50, 0.5);
+}
+.ui-pnotify-container {
+    background-position: 0 0;
+    padding: (@baseLineHeight /2);
+    height: 100%;
+    margin: 0;
+    
+    &.alert-info{
+        background-color: @pnotify-ieinfocolor;
+        background-color: @pnotify-infocolor;
+        border: 1px solid @pnotify-ieinfocolor;
+        border: 1px solid @pnotify-infocolor;
+        .border-radius(2px);
+        
+        //.box-shadow(inset 0 2px 2px 0px lighten(spin(@pnotify-infocolor, -10), 25));
+        color: @grayLighter;
+    }
+}
+.ui-pnotify-sharp {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.ui-pnotify-closer, .ui-pnotify-sticker {
+    float: right;
+    margin-left: .2em;
+}
+.ui-pnotify-title {
+    display: block;
+    margin-bottom: .4em;
+}
+.ui-pnotify-text {
+    display: block;
+    line-height: (@baseLineHeight *0.75);
+    margin-top: (@baseLineHeight *0.25);
+}
+.ui-pnotify-icon, .ui-pnotify-icon span {
+    display: block;
+    float: left;
+    margin-right: .2em;
+}
+/* -- History Pulldown */
+.ui-pnotify-history-container {
+    position: absolute;
+    top: 0;
+    right: 18px;
+    width: 70px;
+    border-top: none;
+    padding: 0;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    -moz-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+    /* Ensures history container is above notices. */
+    z-index: 10000;
+}
+.ui-pnotify-history-container .ui-pnotify-history-header {
+    padding: 2px;
+}
+.ui-pnotify-history-container button {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+.ui-pnotify-history-container .ui-pnotify-history-pulldown {
+    display: block;
+    margin: 0 auto;
+}

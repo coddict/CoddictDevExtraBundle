@@ -1,0 +1,28 @@
+//
+// Mixins
+// --------------------------------------------------
+
+
+// Typography
+// --------------------------------------------------
+
+.photon-text(darkest, @size: @baseFontSize, @shadow: "1px 1px 0px rgba(0, 0, 0, 0.3)", @lineHeight: @baseLineHeight) {
+    color: @grayDark;
+}
+.photon-text(darker, @size: @baseFontSize, @shadow: "1px 1px 0px rgba(0, 0, 0, 0.3)", @lineHeight: @baseLineHeight) {
+    color: @grayDark;
+}
+.photon-text(normal, @size: @baseFontSize, @shadow: "1px 1px 0px rgba(0, 0, 0, 0.3)", @lineHeight: @baseLineHeight) {
+    color: @gray;
+}
+.photon-text(lighter, @size: @baseFontSize, @shadow: "1px 1px 0px rgba(0, 0, 0, 0.3)", @lineHeight: @baseLineHeight) {
+    color: @grayLighter;
+}
+.photon-text(lightest, @size: @baseFontSize, @shadow: "1px 1px 0px rgba(0, 0, 0, 0.3)", @lineHeight: @baseLineHeight) {
+    color: @white;
+}
+.photon-text(@_, @size: @baseFontSize, @shadow: "1px 1px 0px rgba(0, 0, 0, 0.3)", @lineHeight: @baseLineHeight) {
+    font-size: @size;
+    line-height: @lineHeight;
+    text-shadow: @shadow;
+}

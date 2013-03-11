@@ -1,0 +1,164 @@
+/*
+	xBreadcrumbs (Extended Breadcrumbs) jQuery Plugin
+	2009 ajaxBlender.com
+	For any questions please visit www.ajaxblender.com 
+	or email us at support@ajaxblender.com
+*/
+
+
+.breadcrumb-container{
+        width: 200%;
+        height: (@baseLineHeight *1.5);
+        line-height: (@baseLineHeight *1.5);
+        background-color: #f0f0f0;
+        border-bottom: 1px solid rgba(220, 220, 222, 0.9);
+        .box-sizing(border-box);
+        //.box-shadow(inset 15px -23px 2px -21px rgba(220,220,222, 0.4));
+}
+
+.xbreadcrumbs {
+	position: relative;
+	z-index: 1000;
+        clear: both;
+        width: 100%;
+}
+.xbreadcrumbs .breadcrumb-sub-nav { 
+	position: absolute;
+	float: left;
+        .border-radius(0 0 6px 6px);
+	display: none;
+}
+.xbreadcrumbs, .xbreadcrumbs LI, .breadcrumb-sub-nav, .breadcrumb-sub-nav LI {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.xbreadcrumbs, .xbreadcrumbs LI {
+	float: left;
+}
+/*  Base style of xBreadcrumbs  */
+/*  Top Level  */
+.xbreadcrumbs > LI {
+        position: relative;
+        height: (@baseLineHeight *1.5);
+        line-height: (@baseLineHeight *1.5);
+        min-width: 130px;
+        padding: 0 (@baseLineHeight ) 0 0;
+        background-image: url('@{photonImagePath}brd_separator@2x.png');
+        background-position: center right;
+        background-repeat: no-repeat;
+        white-space: nowrap;
+        background-size: @baseLineHeight (@baseLineHeight *1.5);
+        
+        A {
+                display: block;
+                height: (@baseLineHeight *1.5);
+                line-height: (@baseLineHeight *1.5);
+                padding-right: 10px;
+                text-decoration: none;
+                .photon-text(normal, @baseFontSize, 0px 1px 0px #fff, (@baseLineHeight *1.5));
+        }
+        
+        &.current {
+                border-right: none;
+                
+                A {
+                        .photon-text(darker, @baseFontSize, 0px 1px 0px #fff, (@baseLineHeight *1.5));
+                        cursor: default;
+                }
+        }
+        
+        &:first-child{
+            min-width: 0;
+            padding: 0 (@baseLineHeight) 0 0;
+
+            a{
+                padding: 0 (@baseLineHeight) 0 (@baseLineHeight);
+            }
+        }
+
+        &:last-child{
+            min-width: 0;
+        }
+}
+
+/*  Sub-level  */
+.breadcrumb-sub-nav {
+        position: absolute;
+        width: 100%;
+        top: 30px;
+        left: -21px;  
+        background-color: rgba(238, 238, 238,0.95);
+        border: 1px solid #ceced0;
+        border-top: 0px solid rgba(220, 220, 222, 0.9);
+        overflow: hidden;
+        .box-shadow(inset 1px 0 2px 0 #fff);
+        
+        LI {
+            float: left;
+            width: 100%;
+            border-right: none;
+            height: auto;
+            background-image: none;
+            
+            A {
+                display: block;
+                height: (@baseLineHeight *1.5);
+                width: 100%;
+                padding: 0 @baseLineHeight 0 (@baseLineHeight + 3px);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+                white-space: nowrap;
+                text-decoration: none;
+                .photon-text(normal, @baseFontSize, none, (@baseLineHeight * 1.5));
+                .box-sizing(border-box);
+                
+            }
+            
+            &:hover{
+                A {
+                .photon-text(darkest, 14px, none, (@baseLineHeight *1.5));
+                }
+            }
+            
+            &:last-child {
+                .border-radius(0 0 6px 6px);
+                
+                A {
+                    .border-radius(0 0 6px 6px);
+                }
+            }
+            
+        }
+}
+
+// MOBILE
+@media (max-width: 480px) {
+
+    .xbreadcrumbs > LI{
+        position: relative;
+        left: -5px;
+        min-width: 90px;
+        padding: 0 30px 0 0;
+        
+        &:first-child{
+            min-width: 0;
+            padding: 0 15px 0 0;
+
+            a{
+                padding: 0 10px 0 10px;
+            }
+        }
+
+        // &:first-child{
+        //     left: auto;
+        //     padding: 0 25px 0 5px;
+        // }
+    }
+    
+    .breadcrumb-sub-nav{
+        display: none !important;
+    }
+    
+}

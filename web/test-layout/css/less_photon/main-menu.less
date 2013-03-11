@@ -1,0 +1,496 @@
+/*!
+ * Photon Main Menu Component Css v.1.5
+*/
+
+// DESKTOP MODE
+@media screen and (min-width: @minDesktopSize){
+    
+    // MOBILE MENU EXPAND BUTTONS HIDDEN IN DESKTOP MODE
+    .btn-mobile-menus{
+        display: none;
+    }
+    
+    // MAIN MENU WRAPPER DIV
+    .nav-fixed-left {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: @zindexFixedNavbar;
+    }
+    
+    // MAIN MENU
+    .nav-side-menu{
+        position: relative;
+        height: 100%;
+        background-image: url('@{photonImagePath}menu_bck.png');
+        .box-shadow(~"inset -12px 4px 10px -12px rgba(0, 0, 0, 0.6), inset 250px 0 0 rgba(0, 0, 0, 0.35)");
+        .transition(all @shadowAninTimeMM linear);
+        
+        // MAIN MENU ICONS
+        [class^="icon-"], [class*=" icon-"]{
+            position: relative;
+            float: left;
+            vertical-align: middle;
+            color: @grayLighter;
+            margin: 0;
+            height: (@baseLineHeight *1.5 - 2);
+            line-height: (@baseLineHeight *1.5 - 2);
+            text-align: center;
+            width: 38px;
+            margin: 0;
+            background-image: none;
+            z-index: 5;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        
+        // MAIN MENU ITEMS
+        > li{
+            position: relative;
+            
+            // MAIN MENU ITEM <A> WRAPPER
+            > a{
+                position: relative;
+                background: transparent;
+                border-top: 1px solid rgba(31,35,40, 0);
+                border-bottom: 1px solid rgba(31,35,40, 0);
+                height: (@baseLineHeight *1.5 - 2);
+                padding:  0;
+                .photon-text(lighter, @baseFontSize, none);
+                line-height: (@baseLineHeight *1.5 - 2);
+                
+                
+                // MOUSE HOVER STATE FOR THE TOP LEVEL MENU ITEMS (NOTE: NOT THE ENTIRE MENU)
+                &:hover, &:focus{
+                    background: transparent;
+                    background-color: transparent;
+                }
+            }
+            
+            // ADDITIONAL MOUSE HOVER STATE FOR THE TOP LEVEL MENU ITEMS (NOTE: NOT THE ENTIRE MENU)
+            &:hover{
+                
+                // REVEAL SUB MENU IF IT EXISTS
+                .sub-nav .nav{
+                    opacity: 1;
+                    max-width: 350px;
+                }
+                
+                a {
+                    background-color: rgba(31,35,40, 0.35);
+                    border-top: 1px solid rgba(31,35,40, 1);
+                    border-bottom: 1px solid rgba(31,35,40, 1);
+                    .box-shadow(~"0px 1px 0px 0px rgba(255, 255, 255, 0.05), inset 0 -3px 25px -5px rgba(0, 0, 0, 0.7)");
+                    overflow:hidden;
+                    
+                    // CHANGE TEXT COLOR
+                    .nav-selection{
+                        color: @white;
+                    }
+                    
+                    // CHANGE ICON COLOR
+                    [class^="icon-"], [class*=" icon-"]{
+                        color: @white;
+                    }
+                }
+                
+                .sub-nav a {
+                    background-color: inherit;
+                    border:none;
+                    .box-shadow(~"0px 1px 0px 0px rgba(255, 255, 255, 0), inset 0 -3px 25px -5px rgba(0, 0, 0, 0)");
+                }
+                
+                // ADD BACKGROUND DIV ELEMENT
+                    .filler{
+/*                        background-color: rgba(31,35,40, 0.35);
+                        border: 1px solid rgba(31,35,40, 1);
+                        height: 28px;
+                        .box-shadow(~"0px 1px 0px 0px rgba(255, 255, 255, 0.05), inset 0 -3px 25px -5px rgba(0, 0, 0, 0.7)")*/
+                    }
+            }
+        }
+        
+        // SPECIAL CASE TOP MENU ITEM (LOGOUT ITEM, FIXED TO BOTTOM)
+        > li.nav-logout{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+        
+        // BACKGROUND DIV ELEMENT FOR TOP LEVEL MENU ITEMS (ON-HOVER)
+        .filler{
+/*            position: absolute;
+            left: 0;
+            right: 0;
+            width: auto;
+            background: transparent;
+            z-index: 3;
+            border: 0px solid #252b33;
+            .box-shadow(~"0px 0px 0px 0px rgba(255,255,255, 0.1)");*/
+        }
+        
+        // RIGHT SHADOW HELPER DIV FOR MENU EXPANDED STATE
+        > .shadow-layer{
+            position: absolute;
+            display: block;
+            right: 0px;
+            height: 100%;
+            width: 0;
+            border-right: 0 solid rgba(0, 0, 0, 0);
+            z-index: 100;
+            .box-shadow(0px 0px 3px 1px rgba(0, 0, 0, 0));
+            .transition(all @shadowAninTimeMM linear);
+        }
+        
+        // MOUSE OVER MAIN MENU (ANYWHERE ALONG THE LEFT SCREEN EDGE) STATE, EXPANDS THE MENU
+        &:hover{
+            .box-shadow(~"inset -12px 4px 10px -12px rgba(0, 0, 0, 0), inset 250px 0 0 rgba(0, 0, 0, 0.35)");
+            
+            // REVEAL TOP LEVEL MENU ITEM TEXT (THIS ALSO EXPANDS THE MENU)
+            .nav-selection{
+                max-width: 250px;
+                padding-right: 10px;
+            }
+            
+            // APPLY RIGHT-SHADOW FOR EXPANDED MENU STATE
+            .shadow-layer{
+                .box-shadow(0px 0px 3px 1px rgba(0, 0, 0, 0.8));
+            }
+            
+            // REVEAL ARROW ICON ON THE RIGHT EDGE OF THE TOP LEVEL MENU (ONLY FOR ITEMS WITH SUBMENUS), DEFINED BELOW
+            .sub-nav-container .icon-menu-arrow{
+                max-width: 20px;
+            }
+        }
+    }
+    
+    // TOP LEVEL MENU ITEM TEXT (TRANSITION CONTROLS THE MENU-EXPAND ANIMATION)
+    .nav-selection{
+        position: relative;
+        display: inline-block;
+        max-width: 0;
+        overflow: hidden;
+        margin-left: 2px;
+        white-space: nowrap;
+        z-index: 5;
+        .transition(max-width @expandAninTimeMM linear);
+        
+        // SPACE BETWEEN TEXT AND THE RIGHT MENU EDGE (WHEN EXPANDED)
+        &::after{
+            content: '\00a0\00a0\00a0\00a0';
+        }
+    }
+
+    
+    // SUB MENU WRAPPER DIV
+    .sub-nav{
+        position: absolute;
+        top: 0;
+        right: 0px;
+        width: 0px;
+        text-align:  left;
+        
+        // SUB MENU ITEM LIST
+        .nav{
+            overflow: hidden;
+            max-width: 0;
+            opacity: 0;
+            position: absolute;
+            background-image: url('@{photonImagePath}sub_bck.png');
+            .border-radius(0 4px 4px 0);
+            .transition(all @expandSubMenuAninTimeMM linear @expandSubMenuAninTimeMM);
+            
+            // SUB MENU SINGLE ITEM TEXT (TRANSITION CONTROLS THE MENU-EXPAND ANIMATION)
+            > li{
+                display: block;
+                line-height: (@baseLineHeight *1.5);
+                
+                // SUB MENU TEXT HOVER STATE
+                > :hover{
+                    color: @white;
+                    background: transparent;
+                }
+            }
+        }
+        
+        // SUB MENU SINGLE ITEM
+        a{
+            position: relative;
+            padding: 0 10px;
+            display: inline-block;
+            white-space:nowrap;
+            z-index: 1;
+            .transition(max-width @expandSubMenuAninTimeMM linear @expandSubMenuAninTimeMM);
+            .photon-text(lighter, @baseFontSize, none, (@baseLineHeight *1.5));
+            
+        }
+    }
+    
+    // ARROW ICON ON THE RIGHT EDGE OF THE TOP LEVEL MENU (ONLY FOR ITEMS WITH SUBMENUS)
+    .icon-menu-arrow{
+        max-width: 0;
+        background-image: url('@{photonImagePath}arrow_menu.png') !important;
+        background-position: 100% 10px;
+        position: absolute !important;
+        right: 5px;
+        top: 0;
+        .transition(all 0 ease-out (@expandAninTimeMM*0.75));
+    }   
+
+    // MOBILE USER MENU BUTTON
+    .btn-user-menu img{
+        display: none;
+    }
+}
+// END DESKTOP MODE
+
+
+
+
+
+
+// MOBILE MODE
+
+@expandAninTimeMobMM:              0.1s;
+@expandAninTimeMobSubMM:           0.4s;   
+
+@media screen and (max-width: @maxTabletSize){
+    
+    // MOBILE MENU EXPAND BUTTONS WRAPPER
+    .btn-mobile-menus{
+        position: absolute;
+        display: block;
+        margin: 0;
+        top: @baseLineHeight;
+        left: @baseLineHeight;
+        z-index: @zindexFixedNavbar;
+        
+        // MOBILE MENU BUTTONS
+        .btn{
+            width: 52px;
+            height: 32px;
+            background-image: url('@{photonImagePath}mobile_menus.png');
+            background-position: 0px -1px;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            .transition(none);
+            .box-shadow(none);
+        }
+        
+        // USER MENU BUTTON
+        &.btn-toolbar .btn-user-menu{
+            margin-left: 18px;
+            background-position: -52px -1px;
+        }
+        
+        // MAIN MENU ACTIVE BUTTON
+        .btn-main-menu.active-menu{
+            background-position: 0px -33px;
+        }
+        
+        // USER MENU ACTIVE BUTTON
+        .btn-user-menu.active-menu{
+            background-position: -52px -33px;
+        }
+
+        .btn-user-menu img{
+            display: inline-block;
+            position: relative;
+            top: -2px;
+            left: -6px;
+        }
+    }
+    
+    // NAV ELEMENT RESET FOR MOBILE
+    .nav{
+        margin: 0;
+    }
+    
+    // MAIN MENU WRAPPER DIV (CONTOROLS MOBILE MAIN MENU EXPANSION, JS ADDS THE .mobMMExpanded CLASS)
+    .nav-fixed-left{
+        position: absolute;
+        top: (@baseLineHeight * 2.5);
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 0;
+        height: auto;
+        overflow: hidden;
+        background-image: url('@{photonImagePath}mobile_menu_bck.png');
+        .box-sizing(border-box);
+        .box-shadow(0 9px 13px -9px transparent);
+        z-index: 1100;
+        .transition(all @expandAninTimeMobMM ease-out 0);
+        
+        // MOBILE MAIN MENU EXPANDED STATE
+        &.mobMMExpanded{
+            max-height: 1000px;
+            .box-shadow(0 9px 13px -9px #29313A);
+        }
+    }
+    
+    // MOBILE MAIN MENU TOP LEVEL ITEMS LIST
+    .nav-side-menu {
+        margin: 0;
+        
+        
+        // MOBILE MAIN MENU TOP LEVEL ITEM
+        > li{
+            position: relative;
+            .box-sizing(border-box);
+            border-top: 1px solid #3E444D;
+            border-bottom: 1px solid #1F252D;
+            
+            // MOBILE MAIN MENU TOP LEVEL ITEM <A>
+            > a{
+                position: relative;
+                background: transparent;
+                height: (@baseLineHeight *1.5);
+                padding:  (@baseLineHeight /2) 19px;
+                .photon-text(lighter, @baseFontSize, none);
+                line-height: (@baseLineHeight *1.5);
+                
+                // MOBILE MAIN MENU TOP LEVEL - ITEM HOVER STATE (FOR MOBILE VIEWED ON DESKTOP, NO OTHER PRACTICAL USE)
+                &:hover, &:focus{
+                    background: transparent;
+                    
+                    // MOBILE MAIN MENU TOP LEVEL ITEM TEXT HOVER STATE
+                    .nav-selection{
+                        color: @white;
+                    }
+                    
+                    // MOBILE MAIN MENU TOP LEVEL ITEM ICON HOVER STATE
+                    [class^="icon-"], [class*=" icon-"]{
+                        color: @white;
+                    }
+                }
+            }
+            
+            // MOBILE MAIN MENU TOP LEVEL ITEM TOUCHED/CLICKED STATE
+            &:active{
+                .box-shadow(inset 0 9px 13px -9px rgba(0, 0, 0, 0.8));
+                border-top: 2px rgba(0, 0, 0, 0.8);
+                padding-top: 1px;
+            }
+
+            &:first-child:active{
+                padding-top: 0;
+            }
+            
+            &:nth-child(2){
+                border-top: none;
+            }
+        }
+        
+        // MOBILE MAIN MENU TOP LEVEL ITEM ICONS
+        [class^="icon-"], [class*=" icon-"]{
+            position: relative;
+            vertical-align: middle;
+            color: @grayLighter;
+            margin: 0;
+            top: -1px;
+            height: (@baseLineHeight *1.5);
+            line-height: (@baseLineHeight *1.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            width: 38px;
+            margin: 0;
+            background-image: none;
+            z-index: 5;
+        }
+        
+        // MOBILE MAIN MENU TOP LEVEL ITEM ARROWS
+        .icon-menu-arrow{
+            display: none;
+        }
+        
+        // MOBILE MAIN MENU TOP LEVEL ITEM ARROW (SHOW FOR THOSE WITH SUB MENUS)
+        .sub-nav-container .icon-menu-arrow{
+            position: absolute;
+            display: inline-block;
+            right: 29px;
+            background-image: url('@{photonImagePath}arrow_menu.png');
+            background-position: 100% 22px;
+            .transition(all 0s ease-out (@expandAninTimeMobSubMM*0.75));
+        }
+        
+        // MOBILE MAIN MENU SUB MENU ITEMS LIST WRAPPER
+        .sub-nav {
+            
+            // MOBILE MAIN MENU SUB MENU ITEMS LIST
+            .nav{
+                position: relative;
+                max-height: 0;
+                margin-bottom: 0;
+                overflow: hidden;
+                .box-sizing(border-box);
+                .transition(all @expandAninTimeMobSubMM ease-out (@expandAninTimeMobSubMM * 0.75));
+                
+                // MOBILE MAIN MENU SUB MENU ITEM
+                > li{
+                    position: relative;
+                    display: block;
+                    background-color: #222831;
+                    border-top: 1px solid #393E45;
+                    border-bottom: 1px solid #191E25;
+                    height: (@baseLineHeight *2.5);
+                    line-height: (@baseLineHeight *2.5);
+
+                    // MOBILE MAIN MENU SUB MENU ITEM <A> WRAPPER (DIFFERENT THAN IN DESKTOP)
+                    > a{
+                        position: relative;
+                        border: none;
+                        padding: 0 0 0 58px;
+                        height: (@baseLineHeight *2.5);
+                        .photon-text(lighter, @baseFontSize, none, (@baseLineHeight *2.5));
+                        white-space:nowrap;
+                        
+                        // SUB MENU TEXT HOVER STATE
+                        &:hover{
+                            color: @white;
+                            background: transparent;
+                        }
+                    }
+                    
+                    // MOBILE MAIN MENU SUB MENU - FIRST ITEM
+                    &:first-child{
+                        border-top: 1px solid #393E45;
+                        .box-shadow(inset 0 9px 13px -9px rgba(0, 0, 0, 0.8));
+                        border-top: 1px rgba(0, 0, 0, 0.8);
+                    }
+
+                    // MOBILE MAIN MENU SUB MENU - LAST ITEM
+                    &:last-child{
+                        border-bottom: none;
+                        .box-shadow(inset 0 -9px 9px -10px rgba(0, 0, 0, 0.8));
+                    }
+
+                    // MOBILE MAIN MENU SUB MENU - ITEM HOVER STATE (FOR MOBILE VIEWED ON DESKTOP, NO OTHER PRACTICAL USE)
+                    &:hover{
+                        text-decoration: none;
+                        .photon-text(lightest, @baseFontSize, none);
+                    }
+                }
+            }
+        }
+        
+        // EXPANDED MAIN MENU SUB MENU ITEMS LIST (TRIGGERED BY .nav-active JS ADDED CLASS)
+        .nav-active .sub-nav .nav {
+            max-height: 1000px;
+        }
+        
+        // MOBILE MAIN MENU TOP LEVEL ITEM ARROW (CHANGE WHEN SUB MENU EXPANDED)
+        .nav-active .icon-menu-arrow{
+            background-image: url('@{photonImagePath}arrow_menu_exp.png');
+        }
+    }
+    
+    // HIDE VERTICAL SHADOW HELPER DIV IN MOBILE MODE
+    .shadow-layer{
+        display: none;
+    }
+}
+// END MOBILE MODE
