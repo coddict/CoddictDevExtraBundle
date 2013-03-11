@@ -1,0 +1,117 @@
+//
+// Errors
+// --------------------------------------------------
+
+
+// Common
+// --------------------------------------------------
+.error-page{
+    display: table;
+    .filler;
+}
+.error-block-wrapper{
+    display: table-cell;
+    vertical-align: middle;
+}
+.error-block{
+    position: relative;
+    margin: 0 auto;
+    width: 250px;
+}
+.error-left{
+    width: (248px - (@baseLineHeight *1.5));
+    border-right: 1px solid rgba(190, 190, 190, 0.7);
+    
+    h1{
+        color: #DB6600;
+        position: relative;
+        font-size: 120px;
+        height: 120px;
+        line-height: 120px;
+        font-family: 'Lato', sans-serif;
+        width: 100%;
+        clear: both;
+    }
+    
+    > span{
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+.error-right{
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: (@baseLineHeight *1.5);
+   height: 160px;
+   border-left: 1px solid rgba(255, 255, 255, 0.8);
+   
+   .home{
+        color: #333;
+        width: 100%;
+        text-align: center;
+        bottom: -5px;
+        left: -1px;
+        position: absolute;
+        .opacity(80);
+    }
+}
+
+.error-search{
+    position: relative;
+    height: (@baseLineHeight *3);
+    margin-top: (@baseLineHeight /2);
+
+    &.container-fluid{
+        padding: 0
+    }
+
+    input[type="text"]{
+        margin-top: 0;
+        font-size: 12px;
+        border: 1px solid @grayLighter;
+        padding-right: (@baseLineHeight *2 + 2px);
+        .box-shadow(~"inset 2px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(255, 255, 255, 0.9)");
+    }
+
+    .btn-search{
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        padding: 0;
+        margin: 0;
+        height: (@baseLineHeight *1.5 - 4px);
+        width: (@baseLineHeight *1.5);
+        border: none;
+        .box-shadow(none);
+        .border-radius(0);
+        border-left: 1px solid rgba(100, 108, 117, 0.4);
+        background: transparent url('@{photonImagePath}search_icon_dark@2x.png') no-repeat;
+        background-size: 15px 15px;
+        background-position: center center;
+        cursor: pointer;
+        .transition(none);
+
+        &:hover{
+            background: transparent url('@{photonImagePath}search_icon_dark@2x.png') no-repeat;
+            background-size: 15px 15px;
+            background-position: center center;
+            border: none;
+            border-left: 1px solid rgba(100, 108, 117, 0.4);
+        }
+    }
+}
+
+
+
+// INDIVIDUAL ERRORS
+
+.error-4{
+    .error-details{
+        color: @warningText;
+    }
+    .icon-photon.info-circle{
+        background: @warningText;
+    }
+}

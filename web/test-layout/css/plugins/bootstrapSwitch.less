@@ -1,0 +1,193 @@
+/* ============================================================
+ * bootstrapSwitch v1.0 by Larentis Mattia @spiritualGuru
+ * http://www.larentis.eu/switch/
+ * ============================================================
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * ============================================================ */
+
+
+@switch-border: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+@switch-white: #ffffff;
+@switch-blue: #0088cc;
+@switch-gray: #e6e6e6;
+@switch-border-radius: 4px;
+
+.switch {
+  display: inline-block;
+  cursor: pointer;
+  .border-radius(5px);
+  border: 1px solid;
+  border-color: @switch-border;
+  background: @switch-gray;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+  line-height: 8px;
+
+  // disable text selection highlighting
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  min-width: 102px;
+
+  &.switch-mini {
+    min-width: 72px;
+  }
+
+  &.switch-small {
+    min-width: 81px;
+  }
+
+  &.switch-large {
+    min-width: 120px;
+  }
+
+  &.deactivate {
+    .opacity(0.5);
+    cursor: default !important;
+    label, span {
+      cursor: default !important;
+    }
+  }
+  > div {
+    display: inline-block;
+    width: 150%;
+    position: relative;
+    top: 0;
+
+    &.switch-animate {
+      .transition(left 0.5s);
+    }
+    &.switch-off {
+      left: -50%;
+    }
+    &.switch-on {
+      left: 0%;
+    }
+  }
+  input[type=checkbox] {
+    //debug
+    display: none;
+    //position: absolute;
+    //margin-left: 60%;
+    //z-index: 123;
+  }
+
+  span, label {
+    .box-sizing(border-box);
+
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    height: 100%;
+
+    padding-bottom: 3px;
+    padding-top: 5px;
+    font-size: @fontSizeSmall;
+    line-height: 20px;
+    .icon-photon{
+      padding: 0 5px;
+    }
+
+    &.switch-mini {
+      padding-bottom: 3px;
+      padding-top: 5px;
+      font-size: @fontSizeMini;
+      line-height: 9px;
+    }
+
+    &.switch-small {
+      padding-bottom: 2px;
+      padding-top: 4px;
+      font-size: @fontSizeSmall;
+      line-height: 18px;
+      .icon-photon{
+        height: @fontSizeSmall;
+        line-height: 8px;
+        padding: 0 3px;
+          &::before{
+          font-size: @fontSizeSmall;
+        }
+      }
+    }
+
+    &.switch-large {
+      padding-bottom: 8px;
+      padding-top: 9px;
+      font-size: @fontSizeLarge;
+      line-height: normal;
+
+      .icon-photon{
+        padding: 3px 5px;
+      }
+    }
+  }
+
+  label {
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 100;
+    width: 33.333333%;
+    border-left: 1px solid @switch-gray;
+    border-right: 1px solid @switch-gray;
+    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @gray, 0 1px 0 rgba(255,255,255,.75));
+
+  }
+
+  span {
+    color: @switch-white;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    z-index: 1;
+    width: 33.333333%;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
+
+    &.switch-left {
+      .border-top-left-radius(@switch-border-radius);
+      .border-bottom-left-radius(@switch-border-radius);
+    }
+    &.switch-right {
+      color: @grayDark;
+      text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.4);
+      .border-top-right-radius(@switch-border-radius);
+      .border-bottom-right-radius(@switch-border-radius);
+      background: @btnBackgroundHighlight;
+      #gradient > .vertical(darken(@btnBackgroundHighlight, 10), @btnBackground);
+    }
+
+    &.switch-primary, &.switch-left {
+      background: @btnPrimaryBackgroundHighlight;
+      #gradient > .vertical(darken(@btnPrimaryBackgroundHighlight, 10), @btnPrimaryBackground);
+    }
+    &.switch-info {
+      @startColor: #5BC0DE;
+      background: @btnInfoBackgroundHighlight;
+      #gradient > .vertical(darken(@btnInfoBackgroundHighlight, 10), @btnInfoBackground);
+    }
+    &.switch-success {
+      @startColor: #62C462;
+      background: @btnSuccessBackgroundHighlight;
+      #gradient > .vertical(darken(@btnSuccessBackgroundHighlight, 10), @btnSuccessBackground);
+    }
+    &.switch-warning {
+      @startColor: #DBB450;
+      background: @btnWarningBackgroundHighlight;
+      #gradient > .vertical(darken(@btnWarningBackgroundHighlight, 10), @btnWarningBackground);
+    }
+    &.switch-danger {
+      background: @btnDangerBackgroundHighlight;
+      #gradient > .vertical(darken(@btnDangerBackgroundHighlight, 10), @btnDangerBackground);
+    }
+  }
+}
+
+
+.span-inset .switch{
+    margin-bottom: (@baseLineHeight *0.75);
+}

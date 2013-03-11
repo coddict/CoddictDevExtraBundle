@@ -1,0 +1,23 @@
+//
+// Tooltips
+// --------------------------------------------------
+
+
+// Base class
+.tooltip {
+  padding: 5px;
+  font-size: 14px;
+  line-height: @baseLineHeight;
+  font-family: @baseFontFamily; // to correct iconic font changes
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: 120px;
+  padding: (@baseLineHeight /4) (@baseLineHeight /2);
+}
+
+.panel .tooltip-inner{
+	white-space:pre;
+    max-width:none;
+}

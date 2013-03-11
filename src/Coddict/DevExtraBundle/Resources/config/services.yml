@@ -1,0 +1,7 @@
+services:
+    coddictdevextra.entitymanager:
+        class:        Coddict\DevExtraBundle\Services\EntityManager
+        arguments:    ["@service_container"]
+    coddictdevextra.composer:
+        class:        Coddict\DevExtraBundle\Services\ComposerService
+        arguments:    ["@service_container"]

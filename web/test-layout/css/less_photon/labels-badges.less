@@ -1,0 +1,9 @@
+
+// Colors
+// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
+.label,
+.badge {
+  // Important (red)
+  &-important         { background-color: @errorBackground; }
+  &-important[href]   { background-color: darken(@errorBackground, 10%); }
+}

@@ -1,0 +1,9 @@
+<ul class="unstyled" ng-controller="MainMenuCtrl">
+    <li class="shadow-layer"></li>
+    <li ng-repeat="item in menuItems">
+        <a href='#{{ item.path }}'>
+            <i class="icon-{{ item.icon }}"></i> 
+            <span>{{ item.text }}</span>
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,51 @@
+.nav-tabs {
+    background-color: @grayTitle;
+    .border-radius(@inputBorderRadius @inputBorderRadius 0 0);
+    li {
+    	 a {
+    	 	color: inherit;
+    	 	&:hover {
+    			background-color: lighten(@grayTitle, 10%);
+    	 	}
+    	}
+    }
+    .active {
+    	background-color: lighten(@grayTitle, 30%);
+    }
+
+    .dropdown-toggle .caret{
+    	border-bottom-color: @grayDark;
+    	border-top-color: @grayDark;
+    }
+    
+    > li > a{
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    
+}
+.tab-pane {
+	padding: (@baseLineHeight /2);
+	background-color: white;
+	border: 1px solid @tableBorder;
+        .border-radius(0 0 @inputBorderRadius @inputBorderRadius);
+	border-top: transparent;
+	margin-bottom: (@baseLineHeight /2);
+        
+        p:last-child{
+            margin-bottom: 0;
+        }
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a, .dropdown-menu .active > a, .dropdown-menu .active:hover > a {
+	background: transparent;
+    #gradient.vertical(@grayDark, @grayDarker);
+	//background-image: linear-gradient(to bottom, @grayDark, @grayDarker);
+}
+
+.dropdown-menu .active > a, .dropdown-menu .active:hover > a{
+    color: @white;
+}
+.dropdown .caret {
+    margin-left: 4px;
+}

@@ -1,0 +1,38 @@
+{% extends "CoddictDevExtraBundle:Layout:layout.html.twig" %}
+
+{% block body_attributes %}{{ parent() }}  ng-app="app" ng-controller="MainCtrl"{% endblock %}
+
+{% block body %}
+    {% raw %}
+    
+    <div class="main-menu" ng-include="baseBundleUrl+'/partials/mainMenu.html'">
+        
+    </div>
+    <div ng-view></div>
+    
+    {% endraw %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+    
+    
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/app.js"></script>
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/MainCtrl.js"></script>
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/MainMenuCtrl.js"></script>
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/HomeCtrl.js"></script>
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/ComposerCtrl.js"></script>
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/ComposerAddDepCtrl.js"></script>
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/ComposerService.js"></script>
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/btspModalDirective.js"></script>
+    <script type="text/javascript" src="/bundles/coddictdevextra/app/js/transFilter.js"></script>
+    
+    <script type="text/javascript" src="{{ asset('bundles/bazingaexposetranslation/js/translator.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('bazinga_exposetranslation_js', { 'domain_name': 'angularjs' }) }}"></script>
+    
+{% endblock %}

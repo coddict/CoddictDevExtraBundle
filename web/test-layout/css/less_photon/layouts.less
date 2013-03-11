@@ -1,0 +1,33 @@
+//
+// Layouts
+// --------------------------------------------------
+
+// Form Container
+.form-horizontal .container-fluid {
+    padding: 0;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: 1px solid @grayLighter;
+    .border-radius(6px);
+    margin-bottom: (@baseLineHeight *1.5);
+    
+    &.no-outter-border{
+        border: none;
+        .border-radius(0px);
+        
+        .span-filler{
+            float: left;
+            background: #F0F0F0;
+            margin-bottom: @baseLineHeight;
+            border: 1px solid @grayLighter;
+            .border-radius(6px);
+            .box-shadow(~"1px 1px 0px white, inset 1px 1px 0px white");
+        }
+    }
+}
+
+
+.container-fluid > .form-horizontal .container-fluid{
+    padding: 0;
+    margin: 0 0 (@baseLineHeight *1.5);
+}

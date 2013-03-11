@@ -1,0 +1,103 @@
+// Core variables and mixins
+@import "variables.less";                       // Modify this for custom colors, font-sizes, etc
+@import "less_bootstrap/mixins.less";
+fieldset{
+	display: block;
+}
+
+
+/*!
+ * Photon User Menu Component Css v.1.0
+*/
+
+// DESKTOP MODE
+
+@media screen and (min-width: @minDesktopSize){
+    
+    // USER MENU WRAPPER
+    .nav-fixed-topright{
+        .border-radius(0 0 0 4px);
+    }
+}
+
+.xbreadcrumbs .breadcrumb-sub-nav { 
+	position: absolute;
+	float: none;
+	left: 0;
+	margin-left: -95px;
+}
+
+.icon-photon{
+	position: relative;
+	top: 2px;
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn{
+	padding-bottom: 3px;
+}
+// Large
+.btn-large {
+  padding: @paddingLarge;
+  font-size: @fontSizeLarge;
+  .border-radius(@borderRadiusLarge);
+}
+.btn-large [class^="icon-"],
+.btn-large [class*=" icon-"] {
+  margin-top: 2px;
+}
+
+// Small
+.btn-small {
+  padding: @paddingSmall;
+  font-size: @fontSizeSmall;
+  .border-radius(@borderRadiusSmall);
+}
+.btn-small [class^="icon-"],
+.btn-small [class*=" icon-"] {
+  margin-top: 0;
+}
+
+// Mini
+.btn-mini {
+  padding: @paddingMini;
+  font-size: @fontSizeMini;
+  line-height: @baseLineHeight;
+  .border-radius(@borderRadiusSmall);
+}
+
+.error-right .home{
+	top: auto;
+}
+
+// widgets
+.widget-latest-users .tooltip.top{
+  margin-left: 105px;
+}
+
+// DISABLE FILTER
+.progress .bar, .ui-slider .ui-slider-range, .slider-green .ui-slider-range, .slider-orange .ui-slider-range, .slider-red .ui-slider-range, .panel-search input[type="text"], .task-completion .progress-info, .task-completion .progress-info .bar{
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)")) !important;
+}
+
+
+// Light Theme adjustments
+
+.light-version .dashboard-title .btn-group > .dropdown-menu li > a{
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)")) !important;
+}
+
+.panel-header{
+  button .icon-photon{
+    margin-top: -2px;
+  }
+}
+
+.widget-head .icon-photon{
+  top: 5px;
+}
+.widget-area.widget-back .widget-savehead .icon-photon{
+  margin-top: -2px;
+}
