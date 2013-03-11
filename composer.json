@@ -1,7 +1,7 @@
 {
     "name": "symfony\/framework-standard-edition",
     "description": "The \"Symfony Standard Edition\" distribution",
-    "autoload": {
+    "autoload": { 
         "psr-0": {
             "": "src\/"
         }
