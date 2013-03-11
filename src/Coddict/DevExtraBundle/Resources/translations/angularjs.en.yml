@@ -1,0 +1,8 @@
+composer:
+    dependency:
+        name: Dependency Name
+        version: Dependency Version
+        all: All Dependencies
+        add: Add Dependency
+        none: No dependencies to display, care to add one?
+    errMsgHeader: Composer Error Message

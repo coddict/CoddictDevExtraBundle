@@ -1,0 +1,47 @@
+/*!
+ * Photon Main Content Component Css v.1.0
+*/
+
+.body-inner{
+    background-image: url('@{photonImagePath}body_bck.jpg');
+}
+
+.use3D{
+  // -webkit-transform: translateZ(0);
+}
+
+// DESKTOP MODE
+
+@media screen and (min-width: @minDesktopSize){
+    .main-content{
+        position: absolute;
+        overflow: hidden;
+        left: 400px;
+        right: 0;
+        width: auto;
+        min-height: 100%;
+        z-index: 1;
+        background: @backgroundGray;
+        .transition(left @expandAninTimePanel ease-out);
+    }
+}
+
+.span-inset{
+    padding: (@baseLineHeight *0.75) (@baseLineHeight /2) 0;
+}
+.span-inset-more{
+    padding: @baseLineHeight @baseLineHeight;
+}
+// END DESKTOP MODE
+
+// MOBILE MODE
+
+@media screen and (max-width: @maxTabletSize){
+    .body-inner {
+        background-image: url('@{photonImagePath}body_bck.jpg');
+    }
+    .main-content{
+        overflow: hidden;
+    }
+}
+// END MOBILE MODE

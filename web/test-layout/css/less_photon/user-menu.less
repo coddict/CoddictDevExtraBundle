@@ -1,0 +1,488 @@
+/*!
+ * Photon User Menu Component Css v.1.0
+*/
+
+// DESKTOP MODE
+
+@media screen and (min-width: @minDesktopSize){
+    
+    // USER MENU WRAPPER
+    .nav-fixed-topright{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: auto;
+        height: (@baseLineHeight *1.5);
+        background-color: rgba(55, 63, 73, 0.9);
+        border-bottom: 1px solid rgba(55, 63, 73, 0.9);
+        z-index: @zindexFixedNavbar;
+        .box-sizing(border-box);
+        .transition(all @scrollAnimTimeUM linear);
+        .border-radius(0 0 0 3px);
+        
+        &.nav-released{
+        }
+    }
+    
+    // USER MENU ITEM LIST
+    .nav-user-menu, .user-sub-menu{
+        height: (@baseLineHeight *1.5);
+        line-height: (@baseLineHeight *1.5);
+        
+        // USER MENU ITEM
+        > li{
+            float: left;
+            height: (@baseLineHeight *1.5);
+            line-height: (@baseLineHeight *1.5);
+            border-right: 1px solid rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            
+            // USER MENU ITEM <A>
+            > a{
+                    position: relative;
+                    background: transparent;
+                    padding: 0 (@baseLineHeight /2);
+                    .photon-text(lighter, @baseFontSize, none);
+                    line-height: (@baseLineHeight *1.5);
+                    height: (@baseLineHeight *1.5);
+
+                    // MOUSE HOVER STATE FOR MENU ITEM <A>
+                    &:hover, &:focus{
+                        background: transparent;
+                        .photon-text(lightest, @baseFontSize, none);
+                        line-height: (@baseLineHeight *1.5);
+                    }
+            }
+            
+            // NOTIFICATION BUBBLE FOR RIGHT-MOST MENU ITEM
+            .notification-count{
+                position: absolute;
+                text-align: center;
+                padding-right: 1px;
+                background: red;
+                opacity: 0.85;
+                top: 2px;
+                right: 2px;
+                height: 12px;
+                width: 15px;
+                z-index: 15;
+                .border-radius(2px);
+                .box-shadow(1px 1px 1px black);
+                .photon-text(lightest, 10px, 1px 0 1px rgba(0, 0, 0, 0.4), 12px);
+                background: #ec3600; 
+                background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjMzYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjMDEyMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+                background: -moz-linear-gradient(top,  #ec3600 0%, #c01200 100%); 
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ec3600), color-stop(100%,#c01200)); 
+                background: -webkit-linear-gradient(top,  #ec3600 0%,#c01200 100%); 
+                background: -o-linear-gradient(top,  #ec3600 0%,#c01200 100%); 
+                background: -ms-linear-gradient(top,  #ec3600 0%,#c01200 100%); 
+                background: linear-gradient(to bottom,  #ec3600 0%,#c01200 100%); 
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ec3600', endColorstr='#c01200',GradientType=0 ); 
+            }
+            
+            // FIRST MENU ITEM STATE WHEN SUBMENU ACTIVE (CLASS ADDED BY JS ON CLICK)
+            &.active-user-menu{
+                background-color: rgba(55, 63, 73, 1);
+                .border-radius(0) !important;
+                
+                // FIRST MENU ITEM ARROW STATE WHEN SUBMENU ACTIVE
+                .icon-menu-arrow{
+                    background-image: url('@{photonImagePath}arrow_menu_exp.png') !important;
+                }
+                
+                // FIRST MENU ITEM TEXT STATE WHEN SUBMENU ACTIVE
+                > a{
+                    .photon-text(lightest, @baseFontSize, none);
+                    line-height: (@baseLineHeight *1.5);
+                }
+                
+                // SUB MENU EXPANDED STATE (TRIGGERED BY .active-user-menu PARENT CLASS)
+                .user-sub-menu{
+                max-width: 400px;
+                max-height: (@baseLineHeight *1.5);
+                }
+            }
+            
+            // FIRST MENU ITEM TEXT SPAN
+            .nav-user-selection{
+                padding: 0 (@baseLineHeight /2);
+            }
+            
+            // FIRST MENU ITEM BORDER RESET
+            &:first-child{
+                border-left: none;
+                .border-radius(0 0 0 3px);
+                
+                // FIRST MENU ITEM PADDING SETUP
+                >a{
+                    padding: 0 (@baseLineHeight - 3px) 0 (@baseLineHeight /2);
+                }
+            }
+            
+            // LAST MENU ITEM BORDER RESET
+            &:last-child{
+                border-right: none;
+            }
+            
+            // USER MENU ITEM HOVER STATE
+            &:hover{
+                background-color: rgba(55, 63, 73, 1);
+            }
+        }
+        
+        // FIRST MENU ITEM ARROW
+        .icon-menu-arrow{
+            max-width: none;
+            background-image: url('@{photonImagePath}arrow_menu.png') !important;
+            background-position: 100% 10px;
+            position: absolute !important;
+            right: 10px;
+            height: (@baseLineHeight *1.5);
+        }
+
+        .icon-photon{
+            font-size: 18px;
+            position: relative;
+            top: 1px;
+        }
+    }
+    
+    // SUB MENU SETUP (CLOSED BY DEFAULT)
+    .user-sub-menu{
+        float:right;
+        background-color: rgba(55, 63, 73, 0.9);
+        .border-radius(0 0 3px 3px);
+        border-right: 1px solid rgba(0, 0, 0, 0.3);
+        max-width: 0;
+        max-height: 0;
+        overflow: hidden;
+        .transition(max-width @expandAninTimeUM linear);
+        
+        // SUB MENU PADDING RESET
+        > li:first-child > a{
+            padding: 0 (@baseLineHeight /2);
+        }
+        > li > a{
+            min-width: 100px;   // FIXED WIDTH ADDED FOR COLOR THEME SELECTOR
+
+            .icon-photon{
+                margin-left: 3px;
+                margin-right: 13px;
+                
+            }
+        }
+        li.dark{
+            background-color: rgb(55, 63, 73);
+        }
+        li.dark a{
+            .icon-photon{
+                color: @black;
+                text-shadow: 1px 1px 1px @grayLight;
+            }
+        }
+        li.light a{
+            .icon-photon{
+                color: @white;
+                text-shadow: 1px 1px 1px #000;
+            }
+        }
+    }
+
+    // DASHBOARD MODIFIER
+
+    .body-dashboard{
+        .nav-fixed-topright{
+            background: transparent;
+            border: none;
+        }
+        .nav-user-menu{
+            .border-radius(0 0 0 8px);
+            border: none;
+            >li{
+            background-image: url('@{photonImagePath}panel_bck.jpg');
+                >a{
+                    background: rgba(55, 63, 73, 0.9);
+                }
+            }
+            >li:first-child{
+                overflow: hidden;
+                >a{
+                    .border-radius(0 0 0 8px);
+                }
+            }
+        }
+        
+        .nav-user-menu, .user-sub-menu{
+            >li:first-child{
+                .border-radius(0 0 0 8px);
+            }
+        }
+        .nav-user-menu > li:first-child.active-user-menu{
+            .border-radius(0);
+            overflow: visible;
+            >a{
+                .border-radius(0);
+            }
+        }
+        .user-sub-menu{
+            position: relative;
+            //left: -1px;
+            background-image: url('@{photonImagePath}panel_bck.jpg');
+            border: none;
+            @umtempvar: max-width @expandAninTimeUM linear, border @expandAninTimeUM linear;
+            .transition(@umtempvar);
+            .border-radius(0 0 8px 8px);
+
+            >li:last-child{
+                .border-radius(0 0 8px 0);
+            }
+            
+            li{
+                background: rgba(55, 63, 73, 0.4);
+
+                &:hover{
+                    background: rgba(55, 63, 73, 0.9);
+                }
+            }
+        }
+        .nav-user-menu > li.active-user-menu .user-sub-menu{
+            border: none;
+        }
+
+
+        // MINIMIZE
+        // HIDE ARROW IN THIS MODE
+        .nav-user-menu .icon-menu-arrow{
+            display: none;
+        }
+        
+        // HIDE SPAN TEXT IN THIS MODE UNTIL SUB MENU EXPANDED
+        .nav-user-selection{
+            display: inline-block;
+            padding: 0 !important;
+            max-width: 0;
+            overflow: hidden;
+            .transition(all @expandAninTimeUM linear);
+        }
+        
+        // RESET PADDINGS TO COMPENSATE FOR LACK OF TEXT AND ARROW
+        .nav-user-menu > li:first-child > a, .user-sub-menu > li:first-child > a{
+            padding: 0 (@baseLineHeight /2);
+        }
+        
+        // EXPAND SPAN TEXT ONCE SUB MENU EXPANDED (TRIGGERED BY .active-user-menu CLASS)
+        .active-user-menu .nav-user-selection{
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0 (@baseLineHeight /2) !important;
+        }
+    }
+
+}
+.nav{
+    margin: 0;
+}
+// USER-ICON
+.user-icon{
+    position: relative;
+    float: left;
+    width: 19px;
+    height: (@baseLineHeight * 1.5);
+    line-height: (@baseLineHeight * 1.5);
+    background: url('@{photonImagePath}user_icon.png') no-repeat;
+    background-size: 19px auto;
+    background-position: center center;
+}
+
+// LOGIN PAGE CROPPED VERSION
+
+.body-login{
+    .nav-fixed-topright{
+        right: -4px;
+    }
+    .nav-user-menu .icon-menu-arrow, .user-sub-menu .icon-menu-arrow{
+        right: 13px;
+    }
+    .nav-user-menu > li{
+        display: none;
+        &:first-child{
+            display: block;
+        }
+    }
+
+}
+
+// END DESKTOP MODE
+
+
+
+
+
+// **************** //
+
+
+
+// DESK-TABLET MODE
+
+@media screen and (max-width: @shortenMenuPoint){
+    // HIDE ARROW IN THIS MODE
+    .nav-user-menu .icon-menu-arrow{
+        display: none;
+    }
+    
+    // HIDE SPAN TEXT IN THIS MODE UNTIL SUB MENU EXPANDED
+    .nav-user-selection{
+        display: inline-block;
+        padding: 0 !important;
+        max-width: 0;
+        overflow: hidden;
+        .transition(all @expandAninTimeUM linear);
+    }
+    
+    // RESET PADDINGS TO COMPENSATE FOR LACK OF TEXT AND ARROW
+    .nav-user-menu > li:first-child > a, .user-sub-menu > li:first-child > a{
+        padding: 0 (@baseLineHeight /2);
+    }
+    
+    // EXPAND SPAN TEXT ONCE SUB MENU EXPANDED (TRIGGERED BY .active-user-menu CLASS)
+    .active-user-menu .nav-user-selection{
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 (@baseLineHeight /2) !important;
+    }
+}
+
+// DESK-TABLET MODE
+
+
+
+
+
+// **************** //
+
+
+
+// MOBILE MODE
+
+@expandAninTimeMobMM:              0.1s;
+@expandAninTimeMobSubMM:           0.4s;   
+
+@media screen and (max-width: @maxTabletSize){
+    // NAV ELEMENT RESET FOR MOBILE
+    .nav{
+        margin: 0;
+    }
+    
+    // MAIN MENU WRAPPER DIV (CONTOROLS MOBILE MAIN MENU EXPANSION, JS ADDS THE .mobMMExpanded CLASS)
+    .nav-fixed-topright{
+        position: absolute;
+        top: (@baseLineHeight * 2.5);
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 0;
+        height: auto;
+        overflow: hidden;
+        background-image: url('@{photonImagePath}mobile_menu_bck.png');
+        .box-sizing(border-box);
+        .box-shadow(0 9px 13px -9px transparent);
+        z-index: 1100;
+        .transition(all @expandAninTimeMobMM ease-out 0);
+        
+        // MOBILE MAIN MENU EXPANDED STATE
+        &.mobMMExpanded{
+            max-height: 1000px;
+            .box-shadow(0 9px 13px -9px #29313A);
+        }
+    }
+    
+    // MOBILE MAIN MENU TOP LEVEL ITEMS LIST
+    .nav-user-menu {
+        margin: 0;
+        
+        
+        // MOBILE MAIN MENU TOP LEVEL ITEM
+        > li{
+            position: relative;
+            .box-sizing(border-box);
+            //border-top: 1px solid #3E444D;
+            //border-bottom: 1px solid #1F252D;
+            
+            // MOBILE MAIN MENU TOP LEVEL ITEM <A>
+            > a{
+                display: none;
+            }
+        }
+            
+        // MOBILE MAIN MENU TOP LEVEL ITEM TOUCHED/CLICKED STATE
+        
+        
+        // MOBILE MAIN MENU TOP LEVEL ITEM ICONS
+        [class^="icon-"], [class*=" icon-"]{
+            display: none;
+        }
+        
+        // MOBILE MAIN MENU TOP LEVEL ITEM ARROWS
+        .nav-user-menu .icon-menu-arrow{
+            display: none;
+        }
+        
+        .user-sub-menu{
+            > li{
+                position: relative;
+                .box-sizing(border-box);
+                border-top: 1px solid #3E444D;
+                border-bottom: 1px solid #1F252D;
+
+                // MOBILE MAIN MENU TOP LEVEL ITEM <A>
+                > a{
+                    position: relative;
+                    background: transparent;
+                    height: (@baseLineHeight *1.5);
+                    padding:  (@baseLineHeight /2) 29px;
+                    .photon-text(lighter, @baseFontSize, none);
+                    line-height: (@baseLineHeight *1.5);
+
+                    // MOBILE MAIN MENU TOP LEVEL - ITEM HOVER STATE (FOR MOBILE VIEWED ON DESKTOP, NO OTHER PRACTICAL USE)
+                    &:hover{
+                        background: transparent;
+
+                        // MOBILE MAIN MENU TOP LEVEL ITEM TEXT HOVER STATE
+                        .nav-selection{
+                            color: @white;
+                        }
+
+                        // MOBILE MAIN MENU TOP LEVEL ITEM ICON HOVER STATE
+                        [class^="icon-"], [class*=" icon-"]{
+                            color: @white;
+                        }
+                    }
+                }
+
+                // MOBILE MAIN MENU TOP LEVEL ITEM TOUCHED/CLICKED STATE
+                &:active{
+                    .box-shadow(inset 0 9px 13px -9px rgba(0, 0, 0, 0.8));
+                    border-top: 2px rgba(0, 0, 0, 0.8);
+                    padding-top: 1px;
+                }
+                
+                &:first-child{
+                    border-top: none;
+
+                    &:active{
+                        padding-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+// END MOBILE MODE
+
+

@@ -1,0 +1,338 @@
+
+
+// LARGE TABLET + MOBILE LESS FILE
+// ---------------------
+
+
+// Padding to set content in a bit
+body {
+    /*    padding-left: 20px;
+    padding-right: 20px;*/
+}
+// Negative indent the now static "fixed" navbar
+.navbar-fixed-top,
+.navbar-fixed-bottom,
+.navbar-static-top {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+// Remove padding on container given explicit padding set on body
+.container-fluid {
+    /*    padding: 0;*/
+}
+
+// TYPOGRAPHY
+// ----------
+// Reset horizontal dl
+.dl-horizontal {
+    dt {
+        float: none;
+        clear: none;
+        width: auto;
+        text-align: left;
+    }
+    dd {
+        margin-left: 0;
+    }
+}
+
+// GRID & CONTAINERS
+// -----------------
+// Remove width from containers
+.container {
+    width: auto;
+}
+// Fluid rows
+.row-fluid {
+    width: 100%;
+}
+// Undo negative margin on rows and thumbnails
+.row,
+.thumbnails {
+    margin-left: 0;
+}
+.thumbnails > li {
+    float: none;
+    margin-left: 0; // Reset the default margin for all li elements when no .span* classes are present
+}
+// Make all grid-sized elements block level again
+[class*="span"],
+.uneditable-input[class*="span"], // Makes uneditable inputs full-width when using grid sizing
+.row-fluid [class*="span"] {
+    float: none;
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    .box-sizing(border-box);
+}
+.span12,
+.row-fluid .span12 {
+    width: 100%;
+    .box-sizing(border-box);
+}
+.row-fluid [class*="offset"]:first-child {
+    margin-left: 0;
+}
+
+// FORM FIELDS
+// -----------
+// Make span* classes full width
+.input-large,
+.input-xlarge,
+.input-xxlarge,
+input[class*="span"],
+select[class*="span"],
+textarea[class*="span"],
+.uneditable-input {
+    .input-block-level();
+}
+// But don't let it screw up prepend/append inputs
+.input-prepend input,
+.input-append input,
+.input-prepend input[class*="span"],
+.input-append input[class*="span"] {
+    display: inline-block; // redeclare so they don't wrap to new lines
+    width: auto;
+}
+.controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0;
+}
+
+.form-horizontal .controls{
+    padding: 0 (@baseLineHeight / 2);
+    margin-bottom: (@baseLineHeight / 2);
+
+    &.controls-map{
+        padding-bottom: 0;
+    }
+
+    .el-rte{
+        margin: 0 !important;
+    }
+}
+.form-horizontal .control-label{
+    padding: (@baseLineHeight / 4) (@baseLineHeight / 2) 0;
+}
+
+// Form controls
+// -------------------------
+
+// Shared size and type resets
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+    margin: 0 0 !important;
+}
+
+// Modals
+.modal {
+    position: fixed;
+    top:   20px;
+    left:  20px;
+    right: 20px;
+    width: auto;
+    margin: 0;
+    &.fade  { top: -100px; }
+    &.fade.in { top: 20px; }
+}
+
+// Select2 Plugin
+
+.select2-container{
+    margin: 0 0;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice{
+    margin: 2px 0 0 5px;
+    line-height: 12px;
+}
+// Dual Select
+
+.pickList_sourceListContainer, .pickList_targetListContainer{
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .pickList_listLabel{
+        text-align: left;
+    }
+}
+.pickList_controlsContainer{
+    padding-top: 125px
+}
+
+
+// RESPONSIVE TABLES
+
+.table-responsive { 
+    position: relative; 
+    float: left;
+    display: block; 
+    margin-bottom: (@baseLineHeight /2);
+    width: 100%; 
+
+    thead{
+        display: block;
+        float: left;
+
+        &:after{
+            visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;
+        }
+    }
+
+    tbody{
+        display: block; width: auto; position: relative; overflow-x: auto; white-space: nowrap;
+
+        tr{
+            display: inline-block; vertical-align: top;
+        }
+    }
+
+    thead th, td{
+        display: block;
+        margin: 0; 
+        padding: 0 (@baseLineHeight /2);
+        border: none;
+        border-right: 1px solid @grayLighter;
+        height: (@baseLineHeight*2);
+        line-height: (@baseLineHeight*2);
+        .box-sizing(border-box);
+    }
+
+    th{
+        text-align: left;
+        width: auto !important;
+    }
+
+    td{
+        display: block; text-align: left;
+        line-height: (@baseLineHeight*2);
+        .box-sizing(border-box);
+    }
+    img{
+        position: relative;
+        top: 5%;
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 90%;
+    }
+}
+.dataTables_wrapper{
+    border: none;
+}
+.dataTables_wrapper .dataTables_info{
+    float: right;
+    clear: both;
+    height: (@baseLineHeight *1.5);
+    line-height: (@baseLineHeight *1.5);
+    padding: 0 (@baseLineHeight /2);
+}
+.dataTables_wrapper .pagination{
+    float: right;
+    clear: both;
+    margin: 0 0 (@baseLineHeight /2) ;
+    height: (@baseLineHeight *1.5);
+    line-height: (@baseLineHeight *1.5);
+    padding: 0 (@baseLineHeight /2);
+}
+.dataTables_length, .dataTables_filter{
+    width: 100%;
+    float: right;
+
+    label{
+        text-align: right;
+    }
+}
+
+// UI
+
+.ui-spinner{
+    margin: 0 0;
+}
+.ui-datepicker-inline{
+    margin: 0 0;
+}
+
+// FILE UPLOAD
+
+.fileupload {
+    margin: 0;
+    padding: 0 (@baseLineHeight /2);
+}
+
+// DASHBOARD MODALS
+.body-dashboard .modal {
+    label{
+        padding: 0 0 5px;
+    }
+    p{
+        margin-bottom: 10px;
+    }
+}
+
+// CHAR COUNTER PLUGIN
+.field-annotation {
+    top: 0; 
+}
+form{
+  span.error{
+    .field-annotation;
+  }
+}
+
+// FARBTASTIC
+.farbtastic{
+    margin: 4px 0 -4px;
+}
+
+// DASHBOARD MODAL controls
+
+.modal-body .control-group{
+    margin-bottom: (@baseLineHeight /2);
+}
+
+// el-rte
+
+.el-paddinginput{
+    width: 120px;
+    select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{
+        margin-bottom: 4px !important;
+    }
+}
+
+// LOGIN
+.login-input-area {
+    input[type="text"], input[type="password"]{
+        width: 256px;
+        display:block !important;
+        margin: 0 auto @baseLineHeight/2 !important;
+    }
+}
+
+// FILE UPLOAD
+
+.fileupload{
+    margin-bottom: @baseLineHeight/2;
+}
+
+// DRAG AND DROP UPLOAD
+.upload-boxes{
+    padding-left: (@baseLineHeight *0.5);
+    div{
+        margin-bottom: @baseLineHeight/2;       
+    }
+}

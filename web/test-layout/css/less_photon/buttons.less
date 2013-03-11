@@ -1,0 +1,294 @@
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Base styles
+// --------------------------------------------------
+
+// Core
+.btn {
+  display: inline-block;
+  .ie7-inline-block();
+  padding: @paddingSmall;
+  margin-bottom: 0; // For input.btn
+  font-size: @fontSizeSmall;
+  line-height: @baseLineHeight;
+  *line-height: @baseLineHeight;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid @btnBorder;
+  .buttonBackground(@btnBackground, @btnBackgroundHighlight, @gray, 0 1px 0 rgba(255,255,255,.75));
+  *border: 0; // Remove the border to prevent IE7's black border on input:focus
+  border-bottom-color: darken(@btnBorder, 10%);
+  .border-radius(@baseBorderRadius);
+  .ie7-restore-left-whitespace(); // Give IE7 some love
+  .box-shadow(@btnShadow);
+
+  // Hover state
+  &:hover {
+    color: @gray;
+    text-decoration: none;
+    background-position: 0 -50px;
+    //.buttonBackground(darken(@btnBackground, 2%), darken(@btnBackgroundHighlight, 5%), @gray, 0 1px 0 rgba(255,255,255,.75));
+    .transition(background-position 0.1s linear);
+  }
+
+  // Focus state for keyboard and accessibility
+  &:focus {
+    .tab-focus();
+  }
+
+  // Active state
+  &.active,
+  &:active {
+    background-color: @btnBackgroundHighlight;
+    background-color: @btnBackgroundHighlight e("\9");
+    background-image: none;
+    outline: 0;
+    .box-shadow(@btnShadowActive);
+  }
+
+  // Disabled state
+  &.disabled,
+  &[disabled] {
+    cursor: default;
+    .buttonBackground(darken(@btnBackground, 0), darken(@btnBackground, 0), @grayLight, 0 1px 0 rgba(255,255,255,.75));
+    .opacity(60);
+    .box-shadow(@btnShadow);
+    border: 1px solid @btnBorder;
+    cursor: disabled;
+  }
+}
+
+
+
+// Button Sizes
+// --------------------------------------------------
+
+// Large
+.btn-large {
+  padding: @paddingLarge;
+  font-size: @fontSizeLarge;
+  .border-radius(@borderRadiusLarge);
+}
+.btn-large [class^="icon-"],
+.btn-large [class*=" icon-"] {
+  margin-top: 2px;
+}
+
+// Small
+.btn-small {
+  padding: @paddingSmall;
+  font-size: @fontSizeSmall;
+  .border-radius(@borderRadiusSmall);
+}
+.btn-small [class^="icon-"],
+.btn-small [class*=" icon-"] {
+  margin-top: 0;
+}
+
+// Mini
+.btn-mini {
+  padding: @paddingMini;
+  font-size: @fontSizeMini;
+  line-height: @baseLineHeight;
+  .border-radius(@borderRadiusSmall);
+}
+
+
+
+
+
+// Block button
+// -------------------------
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  .box-sizing(border-box);
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+// Provide *some* extra contrast for those who can get it
+.btn-primary.active,
+.btn-warning.active,
+.btn-danger.active,
+.btn-success.active,
+.btn-info.active,
+.btn-inverse.active {
+  color: rgba(255,255,255,.75);
+}
+
+// Set the backgrounds
+// -------------------------
+.btn {
+  // reset here as of 2.0.3 due to Recess property order
+  border-color: #c5c5c5;
+  border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
+}
+.btn-primary {
+  .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight, @white, 0px 1px 1px rgba(0, 0, 0, 0.4));
+}
+// Warning appears are orange
+.btn-warning {
+  .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight, @white, 0px 1px 1px rgba(0, 0, 0, 0.4));
+}
+// Danger and error appear as red
+.btn-danger {
+  .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight, @white, 0px 1px 1px rgba(0, 0, 0, 0.4));
+}
+// Success appears as green
+.btn-success {
+  .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight, @white, 0px 1px 1px rgba(0, 0, 0, 0.4));
+}
+// Info appears as a neutral blue
+.btn-info {
+  .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight, @white, 0px 1px 1px rgba(0, 0, 0, 0.4));
+}
+// Inverse appears as dark gray
+.btn-inverse {
+  .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight, @white, 0px 1px 1px rgba(0, 0, 0, 0.4));
+}
+
+
+// Cross-browser Jank
+// --------------------------------------------------
+
+button.btn,
+input[type="submit"].btn {
+
+  // Firefox 3.6 only I believe
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  // IE7 has some default padding on button controls
+  *padding-top: 3px;
+  *padding-bottom: 3px;
+
+  &.btn-large {
+    *padding-top: 7px;
+    *padding-bottom: 7px;
+  }
+  &.btn-small {
+    *padding-top: 3px;
+    *padding-bottom: 3px;
+  }
+  &.btn-mini {
+    *padding-top: 1px;
+    *padding-bottom: 1px;
+  }
+}
+
+
+// Link buttons
+// --------------------------------------------------
+
+// Make a button look and behave like a link
+.btn-link,
+.btn-link:active,
+.btn-link[disabled] {
+  background-color: transparent;
+  background-image: none;
+  .box-shadow(none);
+}
+.btn-link {
+  border-color: transparent;
+  cursor: pointer;
+  color: @linkColor;
+  .border-radius(0);
+}
+.btn-link:hover {
+  color: @linkColorHover;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.btn-link[disabled]:hover {
+  color: @grayDark;
+  text-decoration: none;
+}
+
+
+/*!
+ * Photon Custom Buttons Css
+ */
+ 
+.btn-facebook, a.btn-facebook {
+    .buttonBackground(#6190c1, #46649b);
+    display: inline-block;
+    border:1px solid #46649b !important;
+    padding: 11px 0;
+    font-size: @fontSizeLarge;
+    .border-radius(@borderRadiusLarge);
+    font-weight: 500;
+    margin: @baseLineHeight auto 0;
+    display: block;
+    color: @white;
+    text-shadow: 1px 1px 1px #324a70;
+    font-size: 16px;
+    width: 256px;
+}
+
+// Provide *some* extra contrast for those who can get it
+.btn-facebook.active {
+    color: rgba(255,255,255,.75);
+}
+
+.icon-fb {
+    width: 30px;
+    height: 30px;
+    background: url('@{photonImagePath}fb-login.png') no-repeat 0 0;
+    margin: -5px 13px;
+}
+
+.icon-fb-arrow {
+    width: 30px;
+    height: 30px;
+    background: url('@{photonImagePath}fb-arrow.png') no-repeat center center;
+    margin: -5px 10px;
+}
+
+.span-inset .btn{
+    margin-bottom: (@baseLineHeight *0.75);
+}
+
+.btn-user-menu{
+
+    .icon-logo{
+      width: 19px;
+      height: 17px;
+      background: url('@{photonImagePath}user_icon_dark.png') no-repeat center center;
+      background-size: 100% auto;
+      float: left;
+      margin-left: -5px;
+      margin-top: -1px;
+    }
+
+    &.active-menu .icon-logo{
+      background-image: url('@{photonImagePath}user_icon.png');
+    }
+}

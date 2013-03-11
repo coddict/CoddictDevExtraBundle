@@ -1,0 +1,147 @@
+//
+// Progress bars
+// --------------------------------------------------
+
+
+// ANIMATIONS
+// ----------
+
+// Webkit
+@-webkit-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+// Firefox
+@-moz-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+// IE9
+@-ms-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+// Opera
+@-o-keyframes progress-bar-stripes {
+  from  { background-position: 0 0; }
+  to    { background-position: 40px 0; }
+}
+
+// Spec
+@keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+
+
+// THE BARS
+// --------
+
+// Outer container
+.progress {
+  overflow: hidden;
+  height: (@baseLineHeight + 6px);
+  margin-bottom: @baseLineHeight;
+  padding: 3px;
+  background: transparent;
+  background-color: rgba(220, 220, 220, 0.3);
+  border: 1px solid @grayLighter;
+  .box-shadow(inset 3px 3px 4px -1px @grayLighter);
+  .box-sizing(border-box);
+  .border-radius(12px);
+}
+
+// Bar of progress
+.progress .bar {
+  width: 0%;
+  height: 100%;
+  color: @white;
+  float: left;
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  #gradient > .vertical(#149bdf, #0480be);
+  .box-sizing(border-box);
+  .border-radius(10px);
+  .transition(width .6s ease);
+}
+.progress .bar + .bar {
+  .box-shadow(~"inset 1px 0 0 rgba(0,0,0,.15), inset 0 -1px 0 rgba(0,0,0,.15)");
+}
+
+.progress-thin{
+    padding: 0;
+    .border-radius(4px);
+    height: (@baseLineHeight /2 - 2px);
+}
+
+
+
+// Striped bars
+.progress-striped .bar {
+  #gradient > .striped(#149bdf);
+  .background-size(40px 40px);
+}
+
+// Call animation for the active one
+.progress.active .bar {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+     -moz-animation: progress-bar-stripes 2s linear infinite;
+      -ms-animation: progress-bar-stripes 2s linear infinite;
+       -o-animation: progress-bar-stripes 2s linear infinite;
+          animation: progress-bar-stripes 2s linear infinite;
+}
+
+
+
+// COLORS
+// ------
+
+// Danger (red)
+.progress-danger .bar, .progress .bar-danger {
+  #gradient > .vertical(@btnDangerBackground, @btnDangerBackgroundHighlight);
+  border: 1px solid @errorBorder;
+  .box-shadow(inset 0 1px 0 0 lighten(@btnDangerBackgroundHighlight, 30));
+}
+.progress-danger.progress-striped .bar, .progress-striped .bar-danger {
+    #gradient > .striped(@btnDangerBackground);
+}
+
+// Success (green)
+.progress-success .bar, .progress .bar-success {
+  #gradient > .vertical(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+  border: 1px solid @successBorder;
+  .box-shadow(inset 0 1px 0 0 lighten(@btnSuccessBackgroundHighlight, 30));
+}
+.progress-success.progress-striped .bar, .progress-striped .bar-success {
+  #gradient > .striped(@btnSuccessBackground);
+}
+
+// Info (teal)
+.progress-info .bar, .progress .bar-info {
+  #gradient > .vertical(@btnInfoBackground, @btnInfoBackgroundHighlight);
+  border: 1px solid @infoBorder;
+  .box-shadow(inset 0 1px 0 0 lighten(@btnInfoBackgroundHighlight, 30));
+}
+.progress-info.progress-striped .bar, .progress-striped .bar-info {
+  #gradient > .striped(@btnInfoBackground);
+}
+
+// Warning (orange)
+.progress-warning .bar, .progress .bar-warning {
+  #gradient > .vertical(@btnWarningBackground, @btnWarningBackgroundHighlight);
+  border: 1px solid @warningBorder;
+  .box-shadow(inset 0 1px 0 0 lighten(@btnWarningBackgroundHighlight, 30));
+}
+.progress-warning.progress-striped .bar, .progress-striped .bar-warning {
+  #gradient > .striped(@btnWarningBackground);
+}
+
+.progress-thin .bar{
+    border: none;
+    .border-radius(4px 0 0 4px);
+}

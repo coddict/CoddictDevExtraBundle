@@ -1,0 +1,20 @@
+{% extends "CoddictDevExtraBundle:Layout:layout.html.twig" %}
+
+{% block body_class %}{{ parent() }}  login_page {% endblock %}
+
+{% block body %}
+    <div class="login-ctn">
+        <h3 class="text-center">Welcome to CoddictDevExtra</h3>
+        <form class="login-form" method="POST" action="./app-layout">
+            <p class="text-center">Please authenticate</p>
+            
+            <input class="input-block-level" type="text" placeholder="Username" />
+            <input class="input-block-level" type="text" placeholder="Password" />
+            
+            <p class="text-center">
+                <input class="btn btn-success" type="submit" value="Login to Awesomeness" />
+            </p>
+            
+        </form>
+    </div>
+{% endblock %}

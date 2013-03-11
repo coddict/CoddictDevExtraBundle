@@ -1,0 +1,72 @@
+#g1, #g2, #g3 {
+	width: 160px;
+	max-width: 100%;
+	height: 128px;
+	display: block;
+	margin: 0 auto;
+}
+
+.statBox {
+	display: block;
+	width: 100%;
+	max-width: 290px;
+	padding: (@baseLineHeight /2) @baseLineHeight;
+	margin: 0 auto @baseLineHeight;
+	background-color: rgba(220, 220, 220, 0.3);
+	border: 1px solid @grayLighter;
+	.box-shadow(~"1px 1px 0px white, inset 1px 1px 0px white");
+	.box-sizing(border-box);
+
+	.badge, .badge-transparent{
+		height: (@baseLineHeight *2.5);
+		width: (@baseLineHeight *2.5);
+		padding: 0;
+		line-height: (@baseLineHeight *2.5);
+		font-size: (@baseLineHeight *1.5);
+		text-align: center;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+		.border-radius(@baseLineHeight *2.5);
+	}
+
+	.label:empty, .badge:empty{
+		display: inline-block;
+	}
+
+	.badge{
+		color: @white;
+	}
+
+	.badge-transparent{
+		background-color: transparent;
+		font-size: (@baseLineHeight *2);
+	}
+
+	.statHolder{
+		position: relative;
+		display: inline-block;
+		float: right;
+		top: -5px;
+		width: 50%;
+        text-align:right;
+		
+		.statTitle{
+			display: block;
+			font-size: (@baseLineHeight /2);
+			line-height: (@baseLineHeight * 1.5);
+			color: @gray;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.statValue{
+			display: block;
+			//margin-top: (@baseLineHeight /2);
+			font-size: (@baseLineHeight * 1.25);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+}
