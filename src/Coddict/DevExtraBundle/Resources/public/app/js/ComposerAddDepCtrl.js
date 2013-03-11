@@ -1,5 +1,5 @@
 angular.module("app")
-    .controller("ComposerAddDepCtrl", function($scope, $http){
+    .controller("ComposerAddDepCtrl", function($scope, $http, ComposerService){
         
         angular.extend($scope, {
             depName: "",
@@ -21,6 +21,7 @@ angular.module("app")
                     this.message = message || "Unspecified error?";
                 }
                 
+                ComposerService.refreshAllDependencies();
             },
             send: function(event){
                 
