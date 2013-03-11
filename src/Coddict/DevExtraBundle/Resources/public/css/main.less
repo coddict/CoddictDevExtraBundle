@@ -185,8 +185,19 @@ body.retracted{
     }
 }
 
-.composer-dependency-all .table-container{
-    padding: 0 50px;
+.composer-dependency-all{
+    
+    .table-container{
+        padding: 0 50px;
+    }
+}
+
+.clickable[class^="icon-"], .clickable[class*=" icon-"]{
+    cursor: pointer;
+    
+    &:hover{
+        color: #15C;
+    }
 }
 
 @import "login.less";

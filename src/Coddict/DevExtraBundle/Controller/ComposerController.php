@@ -24,12 +24,13 @@ class ComposerController extends JsonController
                 $request->request->get('name'), 
                 $request->request->get('version')
             );
+            
+            $dependencies = $this->get("coddictdevextra.composer")->getDependencies();
         }catch(\Exception $e){
             return $this->JsonError($e->getMessage());
         }
-        return $this->JsonSuccess();
+        return $this->JsonSuccess(array("dependencies" => $dependencies));
     }
-    //getComposerContent
     
     /**
      * @Route("/get-dependencies", name="coddictdevextra.composer.get-dependencies", options={"expose"=true})
@@ -37,6 +38,43 @@ class ComposerController extends JsonController
     public function getDependenciesAction(Request $request)
     {
         try{
+            $dependencies = $this->get("coddictdevextra.composer")->getDependencies();
+        }catch(\Exception $e){
+            return $this->JsonError($e->getMessage());
+        }
+        return $this->JsonSuccess(array("dependencies" => $dependencies));
+    }
+    
+    /**
+     * @Route("/update-dependency", name="coddictdevextra.composer.update-dependency", options={"expose"=true})
+     * @Method({"POST"})
+     */
+    public function updateDependencyAction(Request $request)
+    {
+        try{
+            $this->get("coddictdevextra.composer")->updateDependency(
+                $request->request->get('name'), 
+                $request->request->get('version')
+            );
+            
+            $dependencies = $this->get("coddictdevextra.composer")->getDependencies();
+        }catch(\Exception $e){
+            return $this->JsonError($e->getMessage());
+        }
+        return $this->JsonSuccess(array("dependencies" => $dependencies));
+    }
+    
+    /**
+     * @Route("/remove-dependency", name="coddictdevextra.composer.remove-dependency", options={"expose"=true})
+     * @Method({"POST"})
+     */
+    public function removeDependencyAction(Request $request)
+    {
+        try{
+            $this->get("coddictdevextra.composer")->removeDependency(
+                $request->request->get('name')
+            );
+            
             $dependencies = $this->get("coddictdevextra.composer")->getDependencies();
         }catch(\Exception $e){
             return $this->JsonError($e->getMessage());
