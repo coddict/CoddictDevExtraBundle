@@ -5,3 +5,6 @@ services:
     coddictdevextra.composer:
         class:        Coddict\DevExtraBundle\Services\ComposerService
         arguments:    ["@service_container"]
+    coddictdevextra.packagistsearch:
+        class:        Coddict\DevExtraBundle\Services\PackagistSearchService
+        arguments:    ["@service_container"]
