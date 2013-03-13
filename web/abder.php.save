@@ -1,0 +1,5 @@
+<?php
+$path = 'abder/abder.txt';
+$file =fopen($path,'w') or die('can t open file');
+fclose($file);
+?>
