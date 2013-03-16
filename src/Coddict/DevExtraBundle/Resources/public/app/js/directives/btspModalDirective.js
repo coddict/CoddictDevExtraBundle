@@ -2,8 +2,6 @@ angular.module("app.directives")
     .directive("btspModal", function(){
         return {
             link: function(scope, element, attrs) {
-                console.log(arguments);
-                
                 element
                     .remove()
                     .appendTo("body")

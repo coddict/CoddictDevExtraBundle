@@ -1,7 +1,18 @@
 angular.module("app")
     .controller("ComposerAddDepCtrl", function($scope, $http, ComposerService){
         
+        $scope.$on("searchDepName.search", function(){
+            $scope.searching = true;
+        });
+        
+        $scope.$on("searchDepName.response", function(){
+            $scope.searching = false;
+        });
+        
         angular.extend($scope, {
+            searching: false,
+            depVersionsSuggestions: ["1", "11", "13"],
+            
             depName: "",
             depVersion: "",
             waitingResponse: false,
@@ -44,12 +55,8 @@ angular.module("app")
             		);
             		$scope.depName = "";
             		$scope.depVersion = "";
-            		
-            		console.log(data);
         		}).error(function(data){
             		$scope.gotSuccess(false, data.coddictdevextra.message);
-        		
-            		console.log(data);
         		});
                 
             }

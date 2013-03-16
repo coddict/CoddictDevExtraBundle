@@ -22,25 +22,38 @@ class PackagistSearchController extends JsonController
             $searchResults = $this->get("coddictdevextra.packagistsearch")->search(
                 $request->query->get('term')
             );
+            
+            foreach($searchResults as $index => $package){
+    			$searchResults[$index] = $package["name"];
+    		}
+            
         }catch(\Exception $e){
-            return $this->JsonError($e->getMessage());
+            return $this->JsonResponse();
         }
-        return $this->JsonSuccess(array("searchResults" => $searchResults));
+        return $this->JsonResponse($searchResults);
     }
     
     /**
-     * @Route("/get-package", name="coddictdevextra.packagist-search.get-package", options={"expose"=true})
+     * @Route("/get-package-versions", name="coddictdevextra.packagist-search.get-package-versions", options={"expose"=true})
      */
-    public function getPackageAction(Request $request)
+    public function getPackageVersionsAction(Request $request)
     {
         try{
             $package = $this->get("coddictdevextra.packagistsearch")->getPackage(
                 $request->query->get('name')
             );
+            
+            $versions = array();
+            foreach($package["versions"] as $version => $versionObj){
+                $versions[] = $version;
+            }
+            
+            
         }catch(\Exception $e){
-            return $this->JsonError($e->getMessage());
+            return $this->JsonResponse();
         }
-        return $this->JsonSuccess(array("package" => $package));
+        
+        return $this->JsonResponse($versions);
     }
     
 }

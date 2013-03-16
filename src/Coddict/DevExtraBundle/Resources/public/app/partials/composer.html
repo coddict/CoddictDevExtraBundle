@@ -5,12 +5,18 @@
                 
                 <label>
                     <p>{{ "composer.dependency.name" | trans }}: </p>
-                    <input ng-model="depName" required type="text" placeholder="Ex: symfony/symfony" /> <i class="icon-search"></i>
+                    <input class="has-search-icon" ng-model="depName" required type="text" placeholder="Ex: symfony/symfony" 
+                        auto-complete="{{ 'coddictdevextra.packagist-search.search' | path }}"
+                        auto-complete-emit="searchDepName"
+                    />
+                    <i ng-class="{'icon-search':!searching, 'icon-spinner icon-spin':searching}"></i>
                 </label>
             
                 <label>
                     <p>{{ "composer.dependency.version" | trans }}: </p>
-                    <input ng-model="depVersion" required type="text" placeholder="Ex: 2.2.*" />
+                    <input ng-model="depVersion" required type="text" placeholder="Ex: 2.2.*"
+                        auto-complete-suggest="{{ 'coddictdevextra.packagist-search.get-package-versions' | path }}?name={{depName}}"
+                    />
                 </label>
                 
                 <div>
@@ -19,7 +25,7 @@
                         ng-class="{'btn-success': isSuccess, 'btn-danger': isError}" class="btn btn-primary">
                         <i ng-show="waitingResponse" class="icon-spinner icon-spin"></i> 
                         {{ "composer.dependency.add" | trans }}
-                    </button> {{ message }}
+                    </button> <span ng-bind-html-unsafe="message"></span>
                 </div>
                 
             </fieldset>
@@ -48,7 +54,9 @@
                     <tbody>
                         <tr ng-repeat="(name, version) in dependencies">
                             <td>{{ name }}</td>
-                            <td input-if="{{ isEditing(name) }}" input-if-class="input-small" ng-model="editingDep.newVersion">{{ version }}</td>
+                            <td 
+                                input-if="{{ isEditing(name) }}" input-if-class="input-small" ng-model="editingDep.newVersion"
+                            >{{ version }}</td>
                             <td>
                                 <i ng-click="toggleEditDep(name, version)" ng-class="{'icon-pencil':!isEditing(name), 'icon-ok':isEditing(name)}" class="clickable"></i>
                                 <i ng-click="removeDep(name)" class="icon-trash clickable"></i>
