@@ -1,7 +1,18 @@
 angular.module("app")
     .controller("ComposerAddDepCtrl", function($scope, $http, ComposerService){
         
+        $scope.$on("searchDepName.search", function(){
+            $scope.searching = true;
+        });
+        
+        $scope.$on("searchDepName.response", function(){
+            $scope.searching = false;
+        });
+        
         angular.extend($scope, {
+            searching: false,
+            depVersionsSuggestions: ["1", "11", "13"],
+            
             depName: "",
             depVersion: "",
             waitingResponse: false,
@@ -36,20 +47,16 @@ angular.module("app")
         			data : data,
         			method : 'POST'
         		}).success(function(data){
-        		
             		$scope.gotSuccess(true, 
             		  "Dependency " + $scope.depName 
             		      + " version " + $scope.depVersion 
             		      + " has been added to your composer"
             		);
+            		
             		$scope.depName = "";
             		$scope.depVersion = "";
-            		
-            		console.log(data);
         		}).error(function(data){
             		$scope.gotSuccess(false, data.coddictdevextra.message);
-        		
-            		console.log(data);
         		});
                 
             }
