@@ -28,6 +28,9 @@ angular.module("app")
                         }
                     });
                 });
+                scope.$on("$destroy", function(){
+                    elem.autocomplete( "destroy" );
+                });
             }
         };
     })
@@ -57,6 +60,9 @@ angular.module("app")
                             }
                         });
                     });
+                });
+                scope.$on("$destroy", function(){
+                    elem.autocomplete( "destroy" );
                 });
             }
         };
