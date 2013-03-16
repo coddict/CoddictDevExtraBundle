@@ -1,0 +1,96 @@
+.main-menu{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    
+    > ul {
+        position: relative;
+        height: 100%;
+        box-shadow: inset -12px 4px 10px -12px rgba(0, 0, 0, 0.6), inset 250px 0 0 rgba(0, 0, 0, 0.35);
+        -webkit-transition: all 0.025s linear;
+        background-image: url('../img/menu_bck.png');
+        
+        > li{
+            line-height: 28px;
+            > a{
+                position: relative;
+                background: transparent;
+                border-top: 1px solid rgba(31, 35, 40, 0);
+                border-bottom: 1px solid rgba(31, 35, 40, 0);
+                height: 28px;
+                padding: 0;
+                color: #D1D7DF;
+                font-size: 14px;
+                display: block;
+                cursor: pointer;
+                
+                &:hover{
+                    text-decoration: none;
+                }
+                
+                > i {
+                    position: relative;
+                    float: left;
+                    vertical-align: middle;
+                    color: #D1D7DF;
+                    height: 28px;
+                    line-height: 28px;
+                    text-align: center;
+                    width: 38px;
+                    margin: 0;
+                    z-index: 5;
+                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+                    font-size: 20px;
+                }
+                
+                > span{
+                    max-width: 0px;
+                    position: relative;
+                    display: inline-block;
+                    max-width: 0;
+                    overflow: hidden;
+                    margin-left: 2px;
+                    white-space: nowrap;
+                    z-index: 5;
+                    box-sizing: border-box;
+                    -webkit-transition: max-width 0.05s linear;
+                    
+                    /* non-breaking spaces */
+                    &::after{
+                        content: '\00a0\00a0\00a0\00a0';
+                    }
+                }
+                
+                &:hover{
+                    background-color: rgba(31, 35, 40, 0.35);
+                    border-top: 1px solid #1F2328;
+                    border-bottom: 1px solid #1F2328;
+                    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.05), inset 0 -3px 25px -5px rgba(0, 0, 0, 0.7);
+                    overflow: hidden;
+                }
+            }
+            
+            &.shadow-layer{
+                position: absolute;
+                display: block;
+                right: 0px;
+                height: 100%;
+                width: 0;
+                border-right: 0 solid transparent;
+                z-index: 100;
+                box-shadow: 0px 0px 3px 1px transparent;
+                -webkit-transition: all 0.025s linear;
+            }
+        }
+        
+        &:hover > li > a > span{
+            max-width: 350px;
+        }
+        
+        &:hover > li.shadow-layer{
+            box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.8);
+        }
+    }
+}
