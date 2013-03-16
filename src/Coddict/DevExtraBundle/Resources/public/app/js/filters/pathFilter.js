@@ -1,6 +1,6 @@
 angular.module("app.filters")
     .filter("path", function(){
-        return function(input){
-            return Routing.generate(input);
+        return function(input, params){
+            return Routing.generate(input, params);
         }
     })

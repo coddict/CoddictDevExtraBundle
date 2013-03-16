@@ -15,7 +15,7 @@
                 <label>
                     <p>{{ "composer.dependency.version" | trans }}: </p>
                     <input ng-model="depVersion" required type="text" placeholder="Ex: 2.2.*"
-                        auto-complete-suggest="{{ 'coddictdevextra.packagist-search.get-package-versions' | path }}?name={{depName}}"
+                        auto-complete-suggest="{{ 'coddictdevextra.packagist-search.get-package-versions' | path:{name: depName} }}"
                     />
                 </label>
                 
@@ -54,8 +54,10 @@
                     <tbody>
                         <tr ng-repeat="(name, version) in dependencies">
                             <td>{{ name }}</td>
-                            <td 
-                                input-if="{{ isEditing(name) }}" input-if-class="input-small" ng-model="editingDep.newVersion"
+                            <td input-if="isEditing(name)" 
+                                input-if-model="editingDep.newVersion"
+                                input-if-class="input-small" 
+                                input-if-suggest="{{ 'coddictdevextra.packagist-search.get-package-versions' | path:{name: name} }}"
                             >{{ version }}</td>
                             <td>
                                 <i ng-click="toggleEditDep(name, version)" ng-class="{'icon-pencil':!isEditing(name), 'icon-ok':isEditing(name)}" class="clickable"></i>

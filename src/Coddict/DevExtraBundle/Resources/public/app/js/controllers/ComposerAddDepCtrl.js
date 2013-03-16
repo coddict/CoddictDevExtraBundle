@@ -47,12 +47,12 @@ angular.module("app")
         			data : data,
         			method : 'POST'
         		}).success(function(data){
-        		
             		$scope.gotSuccess(true, 
             		  "Dependency " + $scope.depName 
             		      + " version " + $scope.depVersion 
             		      + " has been added to your composer"
             		);
+            		
             		$scope.depName = "";
             		$scope.depVersion = "";
         		}).error(function(data){

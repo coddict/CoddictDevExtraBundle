@@ -5,31 +5,34 @@ angular.module("app")
             require: "ngModel",
             link: function(scope, elem, attrs, ngModel) {
                 elem.parent().addClass("ui-front");
-                attrs.$observe("autoComplete", function() {
-                    elem.autocomplete({
-                        source: attrs.autoComplete,
-                        minLength: 2,
-                        appendTo: null,
-                        search: function(){
-                            if(attrs.autoCompleteEmit){
-                                scope.$emit(attrs.autoCompleteEmit + ".search");
-                                scope.$apply();
-                            }
-                        },
-                        response: function(){
-                            if(attrs.autoCompleteEmit){
-                                scope.$emit(attrs.autoCompleteEmit + ".response");
-                                scope.$apply();
-                            }
-                        },
-                        select: function(evt, ui){
-                            ngModel.$setViewValue(ui.item.value);
+                elem.autocomplete({
+                    source: [],
+                    minLength: 2,
+                    appendTo: null,
+                    search: function(){
+                        if(attrs.autoCompleteEmit){
+                            scope.$emit(attrs.autoCompleteEmit + ".search");
                             scope.$apply();
                         }
-                    });
+                    },
+                    response: function(){
+                        if(attrs.autoCompleteEmit){
+                            scope.$emit(attrs.autoCompleteEmit + ".response");
+                            scope.$apply();
+                        }
+                    },
+                    select: function(evt, ui){
+                        ngModel.$setViewValue(ui.item.value);
+                        scope.$apply();
+                    }
+                });
+                attrs.$observe("autoComplete", function() {
+                    elem.autocomplete("option", "source", attrs.autoComplete);
                 });
                 scope.$on("$destroy", function(){
-                    elem.autocomplete( "destroy" );
+                    if(elem.is(":ui-autocomplete")){
+                        elem.autocomplete( "destroy" );
+                    }
                 });
             }
         };
@@ -42,27 +45,42 @@ angular.module("app")
                 elem.parent().addClass("ui-front");
                 var lastRequest = null;
                 
+                elem.autocomplete({
+                    autoFocus: true,
+                    source: [],
+                    minLength: 0,
+                    appendTo: null,
+                    select: function(evt, ui){
+                        ngModel.$setViewValue(ui.item.value);
+                        scope.$apply();
+                    },
+                    create: function(){
+                        if(elem.is(":focus")){
+                            elem.autocomplete("search", elem.val());
+                        }
+                    }
+                }).unbind("focus.autoCompleteSuggest").bind("focus.autoCompleteSuggest", function(){
+                    elem.autocomplete("search", elem.val());
+                });
+                
                 attrs.$observe("autoCompleteSuggest", function(value){
                     if(lastRequest){
                         lastRequest.abort();
+                        lastRequest = null;
                     }
-                
-                    lastRequest = jQuery.get(value).done(function(data){
-                        
-                        elem.autocomplete({
-                            autoFocus: true,
-                            source: data,
-                            minLength: 0,
-                            appendTo: null,
-                            select: function(evt, ui){
-                                ngModel.$setViewValue(ui.item.value);
-                                scope.$apply();
+                    if(value){
+                        lastRequest = jQuery.get(value).done(function(data){
+                            elem.autocomplete("option", "source", data);
+                            if(elem.is(":focus")){
+                                elem.autocomplete("search", elem.val());
                             }
                         });
-                    });
+                    }
                 });
                 scope.$on("$destroy", function(){
-                    elem.autocomplete( "destroy" );
+                    if(elem.is(":ui-autocomplete")){
+                        elem.autocomplete( "destroy" );
+                    }
                 });
             }
         };
