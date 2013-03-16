@@ -9,7 +9,7 @@ class PackagistSearchService extends AbstractService
 	
 	protected function package_sorter($key) {
 	    return function ($a, $b) use ($key) {
-	        return strnatcmp($a[$key], $b[$key]);
+	        return strnatcmp($b[$key], $a[$key]);
 	    };
 	}
 

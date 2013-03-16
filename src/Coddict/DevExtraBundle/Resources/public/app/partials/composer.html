@@ -1,11 +1,11 @@
-<div class="left-panel">
+<div class="left-panel composer">
     <div class="content">
-        <form ng-controller="ComposerAddDepCtrl" ng-submit="send()">
+        <form class="add-dependency-form" ng-controller="ComposerAddDepCtrl" ng-submit="send()">
             <fieldset>
                 
                 <label>
                     <p>{{ "composer.dependency.name" | trans }}: </p>
-                    <input ng-model="depName" required type="text" placeholder="Ex: symfony/symfony" />
+                    <input ng-model="depName" required type="text" placeholder="Ex: symfony/symfony" /> <i class="icon-search"></i>
                 </label>
             
                 <label>
@@ -28,10 +28,10 @@
     </div>
     <div class="close-arrow" onclick="$('body').toggleClass('retracted')"></div>
 </div>
-<div class="main-content">
+<div class="main-content composer">
     <div ng-controller="ComposerCtrl">
         
-        <div class="composer-dependency-all">
+        <div class="all-dependencies">
             <legend>
                 {{ "composer.dependency.all" | trans }} 
                 <i ng-click="refreshAllDependencies()" ng-class="{'icon-spin': isUpdating}" class="icon-refresh clickable"></i>
