@@ -10,6 +10,9 @@ class EntityManager extends AbstractService{
      * Updates the database schema based on existing entities
      */
     public function schemaUpdate(){
+    	
+    	// TODO : use ConsoleService
+    	
         $kernel = $this->get('kernel');
         $application = new \Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
         $application->setAutoExit(false);

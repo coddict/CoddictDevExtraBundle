@@ -12,14 +12,21 @@ class ConsoleServiceTest extends WebTestCase
     	$container = static::createClient()->getContainer();
         $commands = $container->get('coddictdevextra.console')->getCommands();
         //var_dump($commands);
-    	$this->assertTrue(true);
+    	$this->assertNotEmpty($commands);
     }
     
+    public function testFindCommand()
+    {
+    	$container = static::createClient()->getContainer();
+	    $command = $container->get('coddictdevextra.console')->findCommand("cache:clear");
+	    $this->assertNotNUll($command);
+    }
     public function testRunCommand()
     {	
     	$container = static::createClient()->getContainer();
-        $container->get('coddictdevextra.console')->runCommand("list","list");
-    	$this->assertTrue(true);
+        $output = $container->get('coddictdevextra.console')->runCommand("list",'--raw');
+        //printf($output->getOutput());
+    	$this->assertNotNull($output);
     }
     
 }

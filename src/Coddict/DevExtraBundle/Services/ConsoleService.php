@@ -6,12 +6,13 @@ use Coddict\DevExtraBundle\Utils\VirtualConsoleApplication;
 use Coddict\DevExtraBundle\Utils\StringOutput;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Input\ArrayInput;
 
 class ConsoleService extends AbstractService
 {
 	public function getCommands()
 	{
-		$kernel = new \AppKernel('dev', true);
+		$kernel = $this->get('kernel');
 		$consoleApp = new VirtualConsoleApplication($kernel);
 		$consoleApp->registerCommands();
 		$commands = $consoleApp->all();
@@ -23,21 +24,34 @@ class ConsoleService extends AbstractService
 		return $output;
 	}
 	
+	public function findCommand($name)
+	{
+		$kernel = $this->get('kernel');
+		$consoleApp = new VirtualConsoleApplication($kernel);
+		$consoleApp->registerCommands();
+		$command = $consoleApp->find($name);
+		return $command;
+	}
+	
+	
+	
 	public function runCommand($name, $param)
 	{
-		$kernel = new \AppKernel('dev', true);
-		$consoleApp = new VirtualConsoleApplication($kernel);
-		if(!$consoleApp->has($name))
-			throw new \Exception("Command not found");
-		$command = $consoleApp->get($name);
+		$command = $this->findCommand($name);
 		$input = null;
 		$output = new StringOutput();
-		if(is_array($param))
-			$input = new ArgvInput($param, $command->getDefinition());
-		else
-			$input = new StringInput($param, $command->getDefinition());
+		
+		if(is_array($param)){
+			$param['command'] = $name;
+			$input = new ArrayInput($param);
+		}
+		else{
+			$param = $name.' '.$param;
+			$input = new StringInput($param);
+		}
 			
-		$command->run($input, $output);
+		$statusCode = $command->run($input, $output);
+
 		return $output;
 	}
 	
