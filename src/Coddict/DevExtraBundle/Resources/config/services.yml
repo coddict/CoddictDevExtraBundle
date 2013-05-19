@@ -11,3 +11,6 @@ services:
     coddictdevextra.console:
         class:        Coddict\DevExtraBundle\Services\ConsoleService
         arguments:    ["@service_container"]
+    coddict_devextra.bundle_manager:
+        class:        Coddict\DevExtraBundle\Services\BundleManager
+        arguments:    ["@service_container"]
