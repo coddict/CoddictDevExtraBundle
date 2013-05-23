@@ -125,7 +125,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -667,12 +667,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "8a14a60dcc2483e09de6a3456f4c05aedc686e7b"
+                "reference": "feaae5dc97c07c55bb4d43932c5ba06156d102f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8a14a60dcc2483e09de6a3456f4c05aedc686e7b",
-                "reference": "8a14a60dcc2483e09de6a3456f4c05aedc686e7b",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/feaae5dc97c07c55bb4d43932c5ba06156d102f4",
+                "reference": "feaae5dc97c07c55bb4d43932c5ba06156d102f4",
                 "shasum": ""
             },
             "require": {
@@ -751,7 +751,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-05-19 01:16:38"
+            "time": "2013-03-15 20:26:03"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -836,7 +836,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -878,7 +878,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -1417,7 +1417,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -2086,12 +2086,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/BazingaExposeTranslationBundle.git",
-                "reference": "0.2.1"
+                "reference": "d791a0501858cbcdeec2b79585865d34d23a31de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/BazingaExposeTranslationBundle/zipball/0.2.1",
-                "reference": "0.2.1",
+                "url": "https://api.github.com/repos/willdurand/BazingaExposeTranslationBundle/zipball/d791a0501858cbcdeec2b79585865d34d23a31de",
+                "reference": "d791a0501858cbcdeec2b79585865d34d23a31de",
                 "shasum": ""
             },
             "require": {
@@ -2130,7 +2130,7 @@
                 "javascript",
                 "translation"
             ],
-            "time": "2013-03-15 23:21:26"
+            "time": "2013-03-15 22:52:10"
         }
     ],
     "packages-dev": [
