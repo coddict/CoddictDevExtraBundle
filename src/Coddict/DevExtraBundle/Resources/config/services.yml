@@ -8,3 +8,6 @@ services:
     coddictdevextra.packagistsearch:
         class:        Coddict\DevExtraBundle\Services\PackagistSearchService
         arguments:    ["@service_container"]
+    coddictdevextra.console:
+        class:        Coddict\DevExtraBundle\Services\ConsoleService
+        arguments:    ["@service_container"]
