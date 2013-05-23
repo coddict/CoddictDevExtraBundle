@@ -12,14 +12,14 @@ class BundleManagerServiceTest extends WebTestCase
 
     protected function setUp()
     {
-        $this->tmpDir = /*sys_get_temp_dir().*/__DIR__.'/../dir_tmp_testBundleManager';
+    	$container = static::createClient()->getContainer();
+        $this->tmpDir = /*sys_get_temp_dir().*/$container->get('kernel')->getRootDir().'/../src/';
         $this->filesystem = new Filesystem();
-        $this->filesystem->remove($this->tmpDir);
     }
 
     protected function tearDown()
     {
-        $this->filesystem->remove($this->tmpDir);
+        //$this->filesystem->remove($this->tmpDir);
     }
     public function testGetBundles()
     {
@@ -35,8 +35,8 @@ class BundleManagerServiceTest extends WebTestCase
 	    $container = static::createClient()->getContainer();
         $service = $container->get('coddict_devextra.bundle_manager');
         $result = $service->newBundle('Company/MainBundle', 'CompanyMainBundle', $this->tmpDir, 'annotation');
-        $result = $service->newBundle('Company/UserBundle', 'CompanyUserBundle', $this->tmpDir, 'yml') && $result;
-        $result = $service->newBundle('Company/AdminBundle', 'CompanyAdminBundle', $this->tmpDir, 'xml') && $result;
+        //$result = $service->newBundle('Company/UserBundle', 'CompanyUserBundle', $this->tmpDir, 'yml') && $result;
+        //$result = $service->newBundle('Company/AdminBundle', 'CompanyAdminBundle', $this->tmpDir, 'xml') && $result;
         $this->assertTrue($result);
         $this->tearDown();
     }
